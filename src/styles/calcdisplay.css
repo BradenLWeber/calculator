@@ -1,7 +1,7 @@
 .calc-screen {
   background: rgb(202, 202, 202);
   font-size: 30px;
-  width: 373px;
+  width: 380px;
   height: 140px;
   text-align: right;
   padding-right: 5px;
@@ -10,8 +10,8 @@
 
 .calc-body {
   background-color: rgb(51, 45, 99);
-  width: 400px;
-  height: 396px;
+  width: 407px;
+  height: 390px;
   border-radius: 10px;
 }
 
