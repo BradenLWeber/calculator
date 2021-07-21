@@ -105,10 +105,15 @@ class Calculator extends Component {
     }
     if (symbol === 'ln') {
       this.setState(currentState => {
-        console.log('currentState.edgeRight', currentState.edgeRight, 'currentState.edgeLeft', currentState.edgeLeft);
         currentState.edgeLeft = currentState.edgeRight < 18 ? 0 : currentState.edgeRight - 17;
         currentState.edgeRight = currentState.edgeRight + 3;
         currentState.cursorPos = currentState.cursorPos + 2;
+        if (currentState.cursorPos <= currentState.edgeLeft + 1) {
+          console.log("this", currentState.edgeLeft, currentState.edgeRight, currentState.cursorPos);
+          currentState.edgeRight += currentState.cursorPos - currentState.edgeLeft - 2;
+          currentState.edgeLeft += currentState.cursorPos - currentState.edgeLeft - 2;
+          console.log("And this", currentState.edgeLeft, currentState.edgeRight, currentState.cursorPos);
+        }
         return currentState;
       });
       return 'ln()';
@@ -164,16 +169,16 @@ class Calculator extends Component {
 
     // Passing in a function eliminates race conditions
     this.setState( currentState => {
-      currentState.cursorPos = currentState.cursorPos + 1;
-      currentState.edgeRight = currentState.edgeRight + 1;
+      currentState.cursorPos++;
+      currentState.edgeRight++;
+      if (currentState.edgeRight > 20) {
+        if (currentState.cursorPos === currentState.edgeLeft + 1) {
+          currentState.edgeRight--;
+        }
+        currentState.edgeLeft = currentState.edgeRight - 21;
+      }
       return currentState;
     });
-
-    if (this.state.edgeRight > 20)
-      this.setState(currentState => {
-        currentState.edgeLeft = currentState.edgeRight - 20
-        return currentState;
-      });
   };
 
   render() {
