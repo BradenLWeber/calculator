@@ -1,4 +1,4 @@
-import "../styles/calcdisplay.css";
+import "../styles/calcDisplay.css";
 
 const CalcScreen = (props) => {
     let cursorPos = props.cursorPos;
