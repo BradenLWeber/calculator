@@ -21,7 +21,7 @@ const CalcScreen = (props) => {
     };
 
     function putCursor() {
-        let pos = 20 + 16.5 * (22 - props.edgeRight + cursorPos);
+        let pos = 27 + 16.5 * (22 - props.edgeRight + cursorPos);
         if (props.lines[0].length > 21) {
             if (props.edgeRight < props.lines[0].length)
                 pos = pos - 11;
