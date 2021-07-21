@@ -1,0 +1,154 @@
+.button {
+  background-color: lightgray;
+  color: black;
+  width: 60px;
+  height: 30px;
+  border-radius: 8px;
+  display: inline-block;
+  text-align: center;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.2s;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #b8b8b8;
+  border-radius: 10px;
+}
+
+.buttonLeftSide {
+  background-color: lightgray;
+  color: black;
+  width: 60px;
+  height: 30px;
+  border-radius: 8px;
+  display: inline-block;
+  text-align: center;
+  font-size: 16px;
+  margin: 4px 2px;
+  margin-left: 9px;
+  transition-duration: 0.2s;
+  cursor: pointer;
+}
+
+.buttonLeftSide:hover {
+  background-color: #c0c0c0;
+  border-radius: 10px;
+}
+
+.buttonUpDown {
+  background-color: rgb(151, 185, 216);
+  color: black;
+  width: 125px;
+  height: 30px;
+  border-radius: 8px;
+  display: inline-block;
+  text-align: center;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.2s;
+  cursor: pointer;
+  margin-left: 9px;
+}
+
+.buttonUpDown:hover {
+  background-color: rgb(103, 158, 209);
+  border-radius: 10px;
+}
+
+.buttonLeft {
+  background-color: rgb(151, 185, 216);
+  color: black;
+  width: 60px;
+  height: 30px;
+  border-radius: 8px;
+  display: inline-block;
+  text-align: center;
+  font-size: 16px;
+  margin: 4px 2px;
+  margin-left: 9px;
+  transition-duration: 0.2s;
+  cursor: pointer;
+}
+
+.buttonLeft:hover {
+  background-color: rgb(103, 158, 209);
+  border-radius: 10px;
+}
+
+.buttonRight {
+  background-color: rgb(151, 185, 216);
+  color: black;
+  width: 60px;
+  height: 30px;
+  border-radius: 8px;
+  display: inline-block;
+  text-align: center;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.2s;
+  cursor: pointer;
+}
+
+.buttonRight:hover {
+  background-color: rgb(103, 158, 209);
+  border-radius: 10px;
+}
+
+.buttonEquals {
+  background-color: lightgreen;
+  color: black;
+  width: 60px;
+  height: 30px;
+  border-radius: 8px;
+  display: inline-block;
+  text-align: center;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.2s;
+  cursor: pointer;
+}
+
+.buttonEquals:hover {
+  background-color: rgb(86, 216, 86);
+  border-radius: 10px;
+}
+
+.buttonRed {
+  background-color: lightcoral;
+  color: black;
+  width: 60px;
+  height: 30px;
+  border-radius: 8px;
+  display: inline-block;
+  text-align: center;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.2s;
+  cursor: pointer;
+}
+
+.buttonRed:hover {
+  background-color: rgb(235, 102, 102);
+  border-radius: 10px;
+}
+
+.buttonNumber {
+  background-color: rgb(161, 161, 161);
+  color: black;
+  width: 60px;
+  height: 30px;
+  border-radius: 8px;
+  display: inline-block;
+  text-align: center;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.2s;
+  cursor: pointer;
+}
+
+.buttonNumber:hover {
+  background-color: #adadad;
+  border-radius: 10px;
+}
