@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./buttons.css";
+import "../styles/buttons.css";
 
 class CalcButton extends Component {
   state = {

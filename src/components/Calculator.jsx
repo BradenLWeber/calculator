@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import CalcButtons from "./calcButtons";
 import CalcScreen from './calcScreen';
-import './calcdisplay.css';
+import '../styles/calcdisplay.css';
 
 class Calculator extends Component {
   state = {
