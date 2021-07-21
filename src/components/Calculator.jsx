@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import CalcButtons from "./calcButtons";
 import CalcScreen from './calcScreen';
-import '../styles/calcdisplay.css';
+import '../styles/calcDisplay.css';
 
 class Calculator extends Component {
   state = {
@@ -24,6 +24,8 @@ class Calculator extends Component {
       ['\u2193', '0', '.', '=', '+'],
     ],
   };
+
+// ----- level zero --------
 
   equalsButtonState = () => {
     return {
@@ -78,11 +80,87 @@ class Calculator extends Component {
     console.log('unknown direction given to move cursor: ' + direction);
   };
 
+  specialButton = (symbol) => {
+    if (symbol === "=") {
+      this.setState( this.equalsButtonState() );
+    }
+    if (symbol === "\u2190") {
+      this.moveCursor('left');
+    }
+    if (symbol === "\u2192") {
+      this.moveCursor('right');
+    }
+    if (symbol === 'AC') {
+      this.setState( this.acButtonState() );
+    }
+    if (symbol === "\u232B") {
+      this.setState( this.deleteButtonState() );
+      this.setState( {edgeRight : this.state.edgeRight - 1});
+    }
+  }
+
+  specialChar = (symbol) => {
+    if (symbol === 'x!') {
+      return '!';
+    }
+    if (symbol === 'ln') {
+      this.setState(currentState => {
+        console.log('currentState.edgeRight', currentState.edgeRight, 'currentState.edgeLeft', currentState.edgeLeft);
+        currentState.edgeLeft = currentState.edgeRight < 18 ? 0 : currentState.edgeRight - 17;
+        currentState.edgeRight = currentState.edgeRight + 3;
+        currentState.cursorPos = currentState.cursorPos + 2;
+        return currentState;
+      });
+      return 'ln()';
+    }
+    if (symbol === "x\u207F") {
+      this.setState(currentState => {
+        currentState.edgeRight = currentState.edgeRight + 2;
+        currentState.cursorPos = currentState.cursorPos + 1;
+        return currentState;
+      });
+      return '^()';
+    }
+    if ( symbol === "\u221A" ) {
+      this.setState(currentState => {
+        currentState.edgeRight = currentState.edgeRight + 2;
+        currentState.cursorPos = currentState.cursorPos + 1;
+        return currentState;
+      });
+      return "\u221A()";
+    }
+  }
+
+// ------- level one ---------
+
+  addSymbol = (symbol, cursorPos) => {
+    //                                 left                   right                                     delete
+    if (symbol === "=" || symbol === "\u2190" || symbol === "\u2192" || symbol === 'AC' || symbol === "\u232B" ) {
+      this.specialButton( symbol );
+      return 'specialButton';
+    }
+
+    //                                                      x^n                   sqrt()
+    if (symbol === 'x!' || symbol === 'ln' || symbol === "x\u207F" || symbol === "\u221A") {
+      symbol = this.specialChar( symbol );
+    }
+
+    const displayedLines = this.state.displayedLines;
+    displayedLines[0] = displayedLines[0]
+      .slice(0, cursorPos)
+      .concat(symbol)
+      .concat(displayedLines[0].slice(cursorPos));
+
+    console.log('After adding symbol, edgeRight:', this.state.edgeRight, 'edgeLeft:', this.state.edgeLeft);
+  };
+
+// ------- level two ---------
+
   onClick = (theButton) => {
     const { symbol } = theButton.state;
     const { cursorPos } = this.state;
 
-    if (this.addSymbol(symbol, cursorPos) === 'specialChar') return;
+    if (this.addSymbol(symbol, cursorPos) === 'specialButton') return;
 
     // Passing in a function eliminates race conditions
     this.setState( currentState => {
@@ -97,68 +175,6 @@ class Calculator extends Component {
         return currentState;
       });
   };
-
-  addSymbol = (symbol, cursorPos) => {
-    if (symbol === "=") {
-      this.setState( this.equalsButtonState() );
-      return 'specialChar';
-    }
-    if (symbol === "\u2190") {
-      this.moveCursor('left');
-      return 'specialChar';
-    }
-    if (symbol === "\u2192") {
-      this.moveCursor('right');
-      return 'specialChar';
-    }
-    if (symbol === 'AC') {
-      this.setState( this.acButtonState() );
-      return 'specialChar';
-    }
-    if (symbol === "\u232B") {
-      this.setState( this.deleteButtonState() );
-      this.setState( {edgeRight : this.state.edgeRight - 1});
-      return 'specialChar';
-    }
-
-    if (symbol === 'x!') {
-      symbol = '!';
-    }
-    if (symbol === 'ln') {
-      symbol = 'ln()';
-      this.setState(currentState => {
-        console.log('currentState.edgeRight', currentState.edgeRight, 'currentState.edgeLeft', currentState.edgeLeft);
-        currentState.edgeLeft = currentState.edgeRight < 18 ? 0 : currentState.edgeRight - 17;
-        currentState.edgeRight = currentState.edgeRight + 3;
-        currentState.cursorPos = currentState.cursorPos + 2;
-        return currentState;
-      });
-    }
-    if (symbol === "x\u207F") {
-      symbol = '^()';
-      this.setState(currentState => {
-        currentState.edgeRight = currentState.edgeRight + 2;
-        currentState.cursorPos = currentState.cursorPos + 1;
-        return currentState;
-      });
-    }
-    if ( symbol === "\u221A" ) {
-      symbol = "\u221A()"
-      this.setState(currentState => {
-        currentState.edgeRight = currentState.edgeRight + 2;
-        currentState.cursorPos = currentState.cursorPos + 1;
-        return currentState;
-      });
-    }
-
-    const displayedLines = this.state.displayedLines;
-    displayedLines[0] = displayedLines[0]
-      .slice(0, cursorPos)
-      .concat(symbol)
-      .concat(displayedLines[0].slice(cursorPos));
-
-    console.log('After adding symbol, edgeRight:', this.state.edgeRight, 'edgeLeft:', this.state.edgeLeft);
-  }
 
   render() {
     console.log('-------------------');
