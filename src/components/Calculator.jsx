@@ -5,7 +5,6 @@ import '../styles/calcDisplay.css';
 
 class Calculator extends Component {
   state = {
-    reset: 0,
     cursorPos: 0,
     edgeRight: 0,
     edgeLeft: 0,
