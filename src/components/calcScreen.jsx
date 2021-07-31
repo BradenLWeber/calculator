@@ -1,50 +1,43 @@
-import "../styles/calcDisplay.css";
+import '../styles/calcDisplay.css';
+import * as constants from '../constants/constants.js';
 
 const CalcScreen = (props) => {
-    let cursorPos = props.cursorPos;
 
-    function userLine (line) {
-        console.log('line being formatted:', line);
-        let returnLine = "";
-        if (props.edgeLeft > 0)
-            returnLine = returnLine.concat("\u2039")
-        returnLine = returnLine.concat(line.slice(props.edgeLeft, props.edgeRight));
-        if (props.edgeRight < line.length)
-            returnLine = returnLine.concat("\u203A");
-
-        return returnLine;
-    };
+    const { edgeRight, edgeLeft, lines, cursorPos } = props;
+    const { CHARS_ON_SCREEN } = constants;
 
     function displayLine(line) {
-        if (line.length < 21) return line;
-        return "\u2039".concat(line.slice(line.length - 21))
+        if (line.length < CHARS_ON_SCREEN) return line;
+        return line.slice(line.length - CHARS_ON_SCREEN);
     };
 
     function putCursor() {
-        let pos = 27 + 16.5 * (22 - props.edgeRight + cursorPos);
-        if (props.lines[0].length > 21) {
-            if (props.edgeRight < props.lines[0].length)
-                pos = pos - 11;
-            if (props.edgeLeft === 0)
-                pos = pos - 5.5;
-        }
-
+        let pos = 4 + 16.5 * (22 - edgeRight + cursorPos);
         return {left : pos + 'px'}
-    }
+    };
 
     return (
-        <div id='calc-screen' className="flex calc-screen">
-            <div id='number-display' className="flex-body" style={{ fontFamily: "Consolas" }}>
-                {displayLine(props.lines[3])}
+        <div id='calc-screen' className="flex calc-screen" style={{ fontFamily: "Consolas" }}>
+            <div id='calc-screen-arrow-column-left' className='flex flex-body calc-arrow-column-left'>
+                {lines[3].length >= CHARS_ON_SCREEN && '<'}< br />
+                {lines[2].length >= CHARS_ON_SCREEN && '<'}< br />
+                {lines[1].length >= CHARS_ON_SCREEN && '<'}< br />
+                {edgeLeft > 0 && '<'}
+            </div>
+            <div id='calc-screen-number-column' className = 'calc-number-column flex-body'>
+                {displayLine(lines[3])}
                 <br />
-                {displayLine(props.lines[2])}
+                {displayLine(lines[2])}
                 <br />
-                {displayLine(props.lines[1])}
+                {displayLine(lines[1])}
                 <br />
-                {userLine(props.lines[0])}
-                <div id='cursor-display' className='calc-cursor' style = {putCursor()}>
-                    |
-                </div>
+                {lines[0].slice(edgeLeft, edgeRight)}
+            </div>
+            <div id='calc-screen-arrow-column-right' className='flex-body calc-arrow-column-right'>
+                < br />< br />< br />{edgeRight < lines[0].length && '>'}
+            </div>
+            <div id='calc-screen-cursor-display' className='calc-cursor' style = {putCursor()}>
+                |
             </div>
         </div>
     );
