@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import CalcButtons from "./calcButtons";
 import CalcScreen from './calcScreen';
 import '../styles/calcDisplay.css';
+import * as constants from '../constants/constants';
 
 class Calculator extends Component {
   state = {
@@ -104,14 +105,12 @@ class Calculator extends Component {
     }
     if (symbol === 'ln') {
       this.setState(currentState => {
-        currentState.edgeLeft = currentState.edgeRight < 18 ? 0 : currentState.edgeRight - 17;
         currentState.edgeRight = currentState.edgeRight + 3;
         currentState.cursorPos = currentState.cursorPos + 2;
-        if (currentState.cursorPos <= currentState.edgeLeft + 1) {
-          console.log("this", currentState.edgeLeft, currentState.edgeRight, currentState.cursorPos);
-          currentState.edgeRight += currentState.cursorPos - currentState.edgeLeft - 2;
-          currentState.edgeLeft += currentState.cursorPos - currentState.edgeLeft - 2;
-          console.log("And this", currentState.edgeLeft, currentState.edgeRight, currentState.cursorPos);
+        // Correct edgeRight and edgeLeft if ln is being added 3 characters or less from the left side of the screen
+        if (currentState.edgeRight > constants.CHARS_ON_SCREEN - 4 && currentState.cursorPos <= currentState.edgeLeft + 5) {
+          currentState.edgeRight -= 6 - (currentState.cursorPos - currentState.edgeLeft);
+          currentState.edgeLeft = currentState.edgeRight - constants.CHARS_ON_SCREEN;
         }
         return currentState;
       });
@@ -170,11 +169,8 @@ class Calculator extends Component {
     this.setState( currentState => {
       currentState.cursorPos++;
       currentState.edgeRight++;
-      if (currentState.edgeRight > 20) {
-        if (currentState.cursorPos === currentState.edgeLeft + 1) {
-          currentState.edgeRight--;
-        }
-        currentState.edgeLeft = currentState.edgeRight - 21;
+      if (currentState.edgeRight >= constants.CHARS_ON_SCREEN) {
+        currentState.edgeLeft = currentState.edgeRight - constants.CHARS_ON_SCREEN;
       }
       return currentState;
     });

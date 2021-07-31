@@ -1,28 +1,63 @@
 .calc-screen {
-    background: rgb(202, 202, 202);
-    font-size: 30px;
-    width: 380px;
-    height: 140px;
-    text-align: right;
-    padding-right: 5px;
-    margin-left: 10px;
-  }
-  
-  .calc-body {
-    background-color: rgb(51, 45, 99);
-    width: 407px;
-    height: 390px;
-    border-radius: 10px;
-  }
-  
-  .calc-cursor {
-    top: 128px;
-    left: 218px;
-    position: absolute;
-    animation: blinker 1s step-start infinite;
-  }
-  
-  @keyframes blinker {
+  width: 388px;
+  height: 140px;
+  margin-left: 10px;
+}
+
+.calc-body {
+  background-color: rgb(51, 45, 99);
+  width: 407px;
+  height: 390px;
+  border-radius: 10px;
+}
+
+.calc-number-column {
+  background: rgb(202, 202, 202);
+  font-size: 30px;
+  width: 325px;
+  height: 140px;
+  text-align: right;
+  padding-right: 5px;
+  display: inline-block;
+  border-style: none ridge none ridge;
+  border-width: 3px;
+  border-color: rgb(51, 45, 99);
+}
+
+.calc-arrow-column-left {
+  height: 140px;
+  width: 18px;
+  padding-left: 1px;
+  background: rgb(160, 161, 170);
+  font-size: 30px;
+  margin-left: 10px;
+  display: inline-block;
+  vertical-align: top;
+  text-align: end;
+  font-family: "Consolas";
+}
+
+.calc-arrow-column-right {
+  height: 140px;
+  width: 18px;
+  padding-left: 1px;
+  background: rgb(160, 161, 170);
+  font-size: 30px;
+  display: inline-block;
+  vertical-align: top;
+  font-family: "Consolas";
+}
+
+.calc-cursor {
+  top: 128px;
+  left: 218px;
+  position: absolute;
+  animation: blinker 1s step-start infinite;
+  font-family: "Consolas";
+  font-size: 30px;
+}
+
+@keyframes blinker {
     50% {
       opacity: 0;
     }
