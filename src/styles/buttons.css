@@ -1,4 +1,4 @@
-.button {
+.button-operator {
   background-color: lightgray;
   color: black;
   width: 60px;
@@ -12,12 +12,12 @@
   cursor: pointer;
 }
 
-.button:hover {
+.button-operator:hover {
   background-color: #b8b8b8;
   border-radius: 10px;
 }
 
-.buttonLeftSide {
+.button-left-side {
   background-color: lightgray;
   color: black;
   width: 60px;
@@ -32,15 +32,15 @@
   cursor: pointer;
 }
 
-.buttonLeftSide:hover {
+.button-left-side:hover {
   background-color: #c0c0c0;
   border-radius: 10px;
 }
 
-.buttonUpDown {
+.button-up-down {
   background-color: rgb(151, 185, 216);
   color: black;
-  width: 125px;
+  width: 124px;
   height: 30px;
   border-radius: 8px;
   display: inline-block;
@@ -52,12 +52,12 @@
   margin-left: 13px;
 }
 
-.buttonUpDown:hover {
+.button-up-down:hover {
   background-color: rgb(103, 158, 209);
   border-radius: 10px;
 }
 
-.buttonLeft {
+.button-left {
   background-color: rgb(151, 185, 216);
   color: black;
   width: 60px;
@@ -72,12 +72,12 @@
   cursor: pointer;
 }
 
-.buttonLeft:hover {
+.button-left:hover {
   background-color: rgb(103, 158, 209);
   border-radius: 10px;
 }
 
-.buttonRight {
+.button-right {
   background-color: rgb(151, 185, 216);
   color: black;
   width: 60px;
@@ -91,12 +91,12 @@
   cursor: pointer;
 }
 
-.buttonRight:hover {
+.button-right:hover {
   background-color: rgb(103, 158, 209);
   border-radius: 10px;
 }
 
-.buttonEquals {
+.button-equals {
   background-color: lightgreen;
   color: black;
   width: 60px;
@@ -110,12 +110,31 @@
   cursor: pointer;
 }
 
-.buttonEquals:hover {
+.button-equals:hover {
   background-color: rgb(86, 216, 86);
   border-radius: 10px;
 }
 
-.buttonRed {
+.button-delete {
+  background-color: lightcoral;
+  color: black;
+  width: 60px;
+  height: 30px;
+  border-radius: 8px;
+  display: inline-block;
+  text-align: center;
+  font-size: 14px;
+  margin: 4px 2px;
+  transition-duration: 0.2s;
+  cursor: pointer;
+}
+
+.button-delete:hover {
+  background-color: rgb(235, 102, 102);
+  border-radius: 10px;
+}
+
+.button-ac {
   background-color: lightcoral;
   color: black;
   width: 60px;
@@ -129,12 +148,12 @@
   cursor: pointer;
 }
 
-.buttonRed:hover {
+.button-ac:hover {
   background-color: rgb(235, 102, 102);
   border-radius: 10px;
 }
 
-.buttonNumber {
+.button-number {
   background-color: rgb(161, 161, 161);
   color: black;
   width: 60px;
@@ -148,7 +167,7 @@
   cursor: pointer;
 }
 
-.buttonNumber:hover {
+.button-number:hover {
   background-color: #adadad;
   border-radius: 10px;
 }

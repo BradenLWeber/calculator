@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import CalcButtons from "./calcButtons";
+import React, { Component } from 'react';
+import CalcButtons from './calcButtons';
 import CalcScreen from './calcScreen';
 import '../styles/calcDisplay.css';
 import * as constants from '../constants/constants';
@@ -71,7 +71,7 @@ class Calculator extends Component {
 
     if (direction === 'right') {
       if (cursorPos === this.state.displayedLines[0].length)
-        return console.log("skipping moving right, edge right - " + this.state.edgeRight + ' edge left - ' + this.state.edgeLeft);
+        return console.log('skipping moving right, edge right - ' + this.state.edgeRight + ' edge left - ' + this.state.edgeLeft);
       if (cursorPos === this.state.edgeRight)
         this.setState({edgeRight : this.state.edgeRight + 1, edgeLeft : this.state.edgeLeft + 1})
       this.setState({cursorPos: cursorPos + 1});
@@ -80,7 +80,7 @@ class Calculator extends Component {
 
     if (direction === 'left') {
       if (cursorPos <= 0)
-        return console.log("skipping moving left, edge right - " + this.state.edgeRight + ' edge left - ' + this.state.edgeLeft);
+        return console.log('skipping moving left, edge right - ' + this.state.edgeRight + ' edge left - ' + this.state.edgeLeft);
       if (cursorPos === this.state.edgeLeft)
         this.setState({edgeRight : this.state.edgeRight - 1, edgeLeft : this.state.edgeLeft - 1});
       this.setState({cursorPos: cursorPos - 1});
@@ -91,19 +91,19 @@ class Calculator extends Component {
   };
 
   specialButton = (symbol) => {
-    if (symbol === "=") {
+    if (symbol === '=') {
       this.setState( this.equalsButtonState() );
     }
-    if (symbol === "\u2190") {
+    if (symbol === '\u2190') {
       this.moveCursor('left');
     }
-    if (symbol === "\u2192") {
+    if (symbol === '\u2192') {
       this.moveCursor('right');
     }
     if (symbol === 'AC') {
       this.setState( this.acButtonState() );
     }
-    if (symbol === "\u232B") {
+    if (symbol === '\u232B') {
       this.setState( this.deleteButtonState() );
     }
   }
@@ -125,7 +125,7 @@ class Calculator extends Component {
       });
       return 'ln()';
     }
-    if (symbol === "x\u207F") {
+    if (symbol === 'x\u207F') {
       this.setState(currentState => {
         currentState.edgeRight = currentState.edgeRight + 2;
         currentState.cursorPos = currentState.cursorPos + 1;
@@ -133,13 +133,13 @@ class Calculator extends Component {
       });
       return '^()';
     }
-    if ( symbol === "\u221A" ) {
+    if ( symbol === '\u221A' ) {
       this.setState(currentState => {
         currentState.edgeRight = currentState.edgeRight + 2;
         currentState.cursorPos = currentState.cursorPos + 1;
         return currentState;
       });
-      return "\u221A()";
+      return '\u221A()';
     }
   }
 
@@ -147,13 +147,13 @@ class Calculator extends Component {
 
   addSymbol = (symbol, cursorPos) => {
     //                                 left                   right                                     delete
-    if (symbol === "=" || symbol === "\u2190" || symbol === "\u2192" || symbol === 'AC' || symbol === "\u232B" ) {
+    if (symbol === '=' || symbol === '\u2190' || symbol === '\u2192' || symbol === 'AC' || symbol === '\u232B' ) {
       this.specialButton( symbol );
       return 'specialButton';
     }
 
     //                                                      x^n                   sqrt()
-    if (symbol === 'x!' || symbol === 'ln' || symbol === "x\u207F" || symbol === "\u221A") {
+    if (symbol === 'x!' || symbol === 'ln' || symbol === 'x\u207F' || symbol === '\u221A') {
       symbol = this.specialChar( symbol );
     }
 
@@ -187,14 +187,14 @@ class Calculator extends Component {
 
   render() {
     console.log('-------------------');
-    console.log("displayedLines during render: ", this.state.displayedLines);
-    console.log("Display index range: " + this.state.edgeLeft + " - " + this.state.edgeRight);
-    console.log("CursorPos:", this.state.cursorPos);
+    console.log('displayedLines during render: ', this.state.displayedLines);
+    console.log('Display index range: ' + this.state.edgeLeft + ' - ' + this.state.edgeRight);
+    console.log('CursorPos:', this.state.cursorPos);
 
     return (
       <React.Fragment>
-        <div id='calculator-body' className="flex calc-body">
-          <div className="flex-body">
+        <div id='calculator-body' className='flex calc-body'>
+          <div className='flex-body'>
             <br />
             <CalcScreen
               lines = {this.state.displayedLines}
