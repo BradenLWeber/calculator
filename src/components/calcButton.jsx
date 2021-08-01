@@ -33,16 +33,14 @@ class CalcButton extends Component {
 
   render() {
     return (
-      <React.Fragment>
-        <button
-          id={this.makeId()}
-          key={this.makeId()}
-          onClick={() => this.props.click(this)}
-          className={this.state.button}
-        >
-          {this.props.symbol}
-        </button>
-      </React.Fragment>
+      <button
+        id={this.makeId()}
+        key={this.makeId()}
+        onClick={() => this.props.click(this)}
+        className={this.state.button}
+      >
+        {this.props.symbol}
+      </button>
     );
   }
 }

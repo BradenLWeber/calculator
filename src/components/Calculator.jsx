@@ -192,21 +192,17 @@ class Calculator extends Component {
     console.log('CursorPos:', this.state.cursorPos);
 
     return (
-      <React.Fragment>
-        <div id='calculator-body' className='flex calc-body'>
-          <div className='flex-body'>
-            <br />
-            <CalcScreen
-              lines = {this.state.displayedLines}
-              edgeRight = {this.state.edgeRight}
-              edgeLeft = {this.state.edgeLeft}
-              cursorPos = {this.state.cursorPos}
-            />
-            <br />
-            <CalcButtons buttons = {this.state.buttons} click = {this.onClick} />
-          </div>
-        </div>
-      </React.Fragment>
+      <div id='calculator-body' className='calc-body'>
+        <br />
+        <CalcScreen
+          lines = {this.state.displayedLines}
+          edgeRight = {this.state.edgeRight}
+          edgeLeft = {this.state.edgeLeft}
+          cursorPos = {this.state.cursorPos}
+        />
+        <div style={ {height : '22px' } }/>
+        <CalcButtons buttons = {this.state.buttons} click = {this.onClick} />
+      </div>
     );
   }
 }
