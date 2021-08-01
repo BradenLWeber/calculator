@@ -46,13 +46,23 @@ class Calculator extends Component {
   };
 
   deleteButtonState = () => {
-    if (this.state.cursorPos === 0) {
+    const { cursorPos } = this.state;
+    if (cursorPos === 0) {
       return {}
     }
+
     let newDisplayedLines = this.state.displayedLines;
-    newDisplayedLines[0] = newDisplayedLines[0].slice(0, this.state.cursorPos-1).concat(newDisplayedLines[0].slice(this.state.cursorPos))
+    let firstCut = cursorPos-1;
+    let secondCut = cursorPos;
+
+    if (newDisplayedLines[0][cursorPos-1] === 'l') secondCut++;
+    else if (newDisplayedLines[0][cursorPos-1] === 'n') firstCut--;
+    newDisplayedLines[0] = newDisplayedLines[0].slice(0, firstCut).concat(newDisplayedLines[0].slice(secondCut))
+
     return {
-      displayedLines: newDisplayedLines
+      displayedLines: newDisplayedLines,
+      cursorPos: cursorPos - 1,
+      edgeRight : this.state.edgeRight - 1
     }
   };
 
@@ -95,7 +105,6 @@ class Calculator extends Component {
     }
     if (symbol === "\u232B") {
       this.setState( this.deleteButtonState() );
-      this.setState( {edgeRight : this.state.edgeRight - 1});
     }
   }
 
