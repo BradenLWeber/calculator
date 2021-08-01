@@ -13,7 +13,10 @@ const CalcScreen = (props) => {
 
     function putCursor() {
         let pos = 4 + 16.5 * (22 - edgeRight + cursorPos);
-        return {left : pos + 'px'}
+        return {
+            left : pos + 'px',
+            top : '131px'
+        }
     };
 
     return (

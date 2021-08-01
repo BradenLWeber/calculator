@@ -18,6 +18,7 @@
   height: 140px;
   text-align: right;
   padding-right: 5px;
+  padding-bottom: 5px;
   display: inline-block;
   border-style: none ridge none ridge;
   border-width: 3px;
@@ -25,7 +26,7 @@
 }
 
 .calc-arrow-column-left {
-  height: 140px;
+  height: 145px;
   width: 18px;
   padding-left: 1px;
   background: rgb(160, 161, 170);
@@ -38,7 +39,7 @@
 }
 
 .calc-arrow-column-right {
-  height: 140px;
+  height: 145px;
   width: 18px;
   padding-left: 1px;
   background: rgb(160, 161, 170);
