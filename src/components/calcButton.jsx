@@ -10,13 +10,15 @@ class CalcButton extends Component {
   constructor(props) {
     super(props);
     const { symbol } = props;
-    if (symbol === '\u2191' || symbol === '\u2193') this.state.button = 'button-up-down';
-    else if (symbol === '\u2190') this.state.button = 'button-left';
-    else if (symbol === '\u2192') this.state.button = 'button-right';
-    else if (symbol === '=') this.state.button = 'button-equals';
-    else if (symbol === 'AC') this.state.button = 'button-ac';
-    else if (symbol === '\u232B') this.state.button = 'button-delete';
+
+    if (symbol === '\u2191' || symbol === '\u2193')  this.state.button = 'button-up-down';
+    else if (symbol === '\u2190')                    this.state.button = 'button-left';
+    else if (symbol === '\u2192')                    this.state.button = 'button-right';
+    else if (symbol === '=' || symbol === 'copy')    this.state.button = 'button-equals';
+    else if (symbol === 'AC')                        this.state.button = 'button-ac';
+    else if (symbol === '\u232B')                    this.state.button = 'button-delete';
     else if (symbol === 'x!' || symbol === '\u221A') this.state.button = 'button-left-side';
+
     else
       try {
         eval(symbol);
@@ -24,6 +26,7 @@ class CalcButton extends Component {
       } catch (err) {
         if (symbol === '.') this.state.button = 'button-number';
       }
+
     if (this.state.button === '') this.state.button = 'button-operator';
   }
 

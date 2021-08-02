@@ -9,6 +9,8 @@ class Calculator extends Component {
     cursorPos: 0,
     edgeRight: 0,
     edgeLeft: 0,
+    edgeTop: 0,
+    edgeBottom: 0,
     currentLine: 0,
     displayedLines: [''],
     mathLines: ['', '', '', ''],
@@ -33,6 +35,7 @@ class Calculator extends Component {
       cursorPos: 0,
       edgeRight: 0,
       edgeLeft: 0,
+      edgeTop: this.state.edgeTop === 0 ? 2 : 4,
       displayedLines: ['', String(eval(this.state.displayedLines[0]))].concat(this.state.displayedLines)
     });
   };
@@ -139,10 +142,20 @@ class Calculator extends Component {
 
   moveLines = (direction) => {
     if (direction === 'up') {
-      if (this.state.currentLine < this.state.displayedLines.length - 7) {
-
+      if (this.state.currentLine < this.state.displayedLines.length-1) {
         this.setState(currentState => {
-          return { currentLine : currentState.currentLine + 1 }
+          // If currentLine pushes off the screen, move the screen up
+          if (currentState.edgeTop === currentState.currentLine + 1 && currentState.edgeTop !== currentState.displayedLines.length) {
+            currentState.edgeTop = currentState.edgeTop + 1;
+            currentState.edgeBottom = currentState.edgeBottom + 1;
+          }
+          // If moving from the bottom line, change "=" to "copy"
+          if (currentState.currentLine === 0) currentState.buttons[4][3] = 'copy';
+          return {
+            currentLine : currentState.currentLine + 1,
+            edgeTop : currentState.edgeTop,
+            edgeBottom : currentState.edgeBottom
+          }
         })
       }
     }
@@ -150,24 +163,51 @@ class Calculator extends Component {
     else if (direction === 'down') {
       if (this.state.currentLine > 0) {
         this.setState(currentState => {
-          return { currentLine : currentState.currentLine - 1 }
-        })
+          // If currentLine pushes off the screen, move the screen down
+          if (currentState.edgeBottom === currentState.currentLine && currentState.edgeBottom !== 0) {
+            currentState.edgeTop = currentState.edgeTop - 1;
+            currentState.edgeBottom = currentState.edgeBottom - 1;
+          }
+          // If moving from the bottom line, change "copy" to "="
+          if (currentState.currentLine === 1) currentState.buttons[4][3] = '=';
+          return {
+            currentLine : currentState.currentLine - 1,
+            edgeTop : currentState.edgeTop,
+            edgeBottom : currentState.edgeBottom
+          };
+        });
       }
     }
 
-    else { console.log('unknown direction given to move lines:', direction); }
+    if (this.state.currentLine !== 0 && this.state.buttons[4][3] === '=') {
+      this.setState(currentState => {
+        currentState.buttons[4][3] = 'copy';
+        return { buttons : currentState.buttons };
+      });
+    } else if (this.state.currentLine === 0 && this.state.buttons[4][3] === 'copy') {
+      this.setState(currentState => {
+        currentState.buttons[4][3] = '=';
+        return { buttons : currentState.buttons };
+      });
+    }
+  }
+
+  copyButton = () => {
+    //
   }
 
 // ------- level one --------
 
   specialButton = (symbol) => {
-    if (symbol === '=')           this.equalsButton();
+    if (symbol === '\u2191') this.moveLines('up');
+    else if (symbol === '\u2193') this.moveLines('down');
+    else if (symbol === 'copy') this.copyButton();
+    else if (this.state.currentLine !== 0) return;
+    else if (symbol === '=')           this.equalsButton();
     else if (symbol === '\u2190') this.moveCursor('left');
     else if (symbol === '\u2192') this.moveCursor('right');
     else if (symbol === 'AC')     this.acButton();
     else if (symbol === '\u232B') this.deleteButton();
-    else if (symbol === '\u2191') this.moveLines('up');
-    else if (symbol === '\u2193') this.moveLines('down');
   }
 
   specialChar = (symbol) => {
@@ -211,10 +251,12 @@ class Calculator extends Component {
     //                                 left                   right
     if (symbol === '=' || symbol === '\u2190' || symbol === '\u2192' || symbol === 'AC' ||
     //               delete                  up                    down
-        symbol === '\u232B' || symbol === '\u2191' || symbol === '\u2193') {
+        symbol === '\u232B' || symbol === '\u2191' || symbol === '\u2193' || symbol === 'copy') {
       this.specialButton( symbol );
       return 'specialButton';
     }
+
+    if (this.state.currentLine !== 0) return 'specialButton';
 
     //                                                      x^n                   sqrt()
     if (symbol === 'x!' || symbol === 'ln' || symbol === 'x\u207F' || symbol === '\u221A') {
@@ -262,11 +304,16 @@ class Calculator extends Component {
           lines = {this.state.displayedLines}
           edgeRight = {this.state.edgeRight}
           edgeLeft = {this.state.edgeLeft}
+          edgeBottom = {this.state.edgeBottom}
           cursorPos = {this.state.cursorPos}
           currentLine = {this.state.currentLine}
         />
         <div style={ {height : '22px' } }/>
-        <CalcButtons buttons = {this.state.buttons} click = {this.onClick} />
+        <CalcButtons
+          buttons = {this.state.buttons}
+          click = {this.onClick}
+          currentLine = {this.state.currentLine}
+        />
       </div>
     );
   }
