@@ -1,7 +1,7 @@
 .calc-screen {
-  width: 388px;
+  width: 374px;
   height: 140px;
-  margin-left: 10px;
+  margin-left: 16.5px;
 }
 
 .calc-body {
@@ -31,7 +31,6 @@
   padding-left: 1px;
   background: rgb(160, 161, 170);
   font-size: 30px;
-  margin-left: 10px;
   display: inline-block;
   vertical-align: top;
   text-align: end;

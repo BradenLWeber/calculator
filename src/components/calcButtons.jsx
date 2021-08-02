@@ -2,7 +2,7 @@ import CalcButton from './calcButton'
 
 const CalcButtons = (props) => {
     return (
-        <div id='buttons'>
+        <div id='calc-buttons'>
             {props.buttons[0].map((symbol) => (
                 <CalcButton key={symbol} symbol={symbol} click={props.click} />
             ))}
