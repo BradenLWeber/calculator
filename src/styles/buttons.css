@@ -130,7 +130,7 @@
 }
 
 .button-delete:hover {
-  background-color: rgb(235, 102, 102);
+  background-color: rgb(231, 93, 93);
   border-radius: 10px;
 }
 
@@ -150,7 +150,7 @@
 }
 
 .button-ac:hover {
-  background-color: rgb(235, 102, 102);
+  background-color: rgb(231, 93, 93);
   border-radius: 10px;
 }
 

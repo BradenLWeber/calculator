@@ -10,6 +10,7 @@ Things next:
 - Deleting ln puts the cursor at the wrong spot
 - Deleting parentheses attached to special operation should delete operation too
 - Left side arrows need to match lines when up/down arrows are used
+- Try/catch block so that bad inputs produce "error"
 
 Things on the list:
 - Make math lines functional
