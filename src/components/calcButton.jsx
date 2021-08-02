@@ -39,7 +39,7 @@ class CalcButton extends Component {
         onClick={() => this.props.click(this)}
         className={this.state.button}
       >
-        {this.props.symbol}
+        {this.state.symbol}
       </button>
     );
   }

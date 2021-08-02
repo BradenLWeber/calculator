@@ -9,7 +9,8 @@ class Calculator extends Component {
     cursorPos: 0,
     edgeRight: 0,
     edgeLeft: 0,
-    displayedLines: ['', '', '', ''],
+    currentLine: 0,
+    displayedLines: [''],
     mathLines: ['', '', '', ''],
     buttons: [
                             // delete
@@ -27,25 +28,25 @@ class Calculator extends Component {
 
 // ----- level zero --------
 
-  equalsButtonState = () => {
-    return {
+  equalsButton = () => {
+    this.setState({
       cursorPos: 0,
       edgeRight: 0,
       edgeLeft: 0,
       displayedLines: ['', String(eval(this.state.displayedLines[0]))].concat(this.state.displayedLines)
-    }
+    });
   };
 
-  acButtonState = () => {
-    return {
+  acButton = () => {
+    this.setState({
       cursorPos: 0,
       edgeRight: 0,
       edgeLeft: 0,
       displayedLines: [''].concat(this.state.displayedLines.slice(1))
-    }
+    });
   };
 
-  deleteButtonState = () => {
+  deleteButton = () => {
     const { cursorPos } = this.state;
     if (cursorPos === 0) {
       return {}
@@ -59,11 +60,11 @@ class Calculator extends Component {
     else if (newDisplayedLines[0][cursorPos-1] === 'n') firstCut--;
     newDisplayedLines[0] = newDisplayedLines[0].slice(0, firstCut).concat(newDisplayedLines[0].slice(secondCut))
 
-    return {
+    this.setState ({
       displayedLines: newDisplayedLines,
       cursorPos: cursorPos - 1,
       edgeRight : this.state.edgeRight - 1
-    }
+    });
   };
 
   moveCursor = (direction) => {
@@ -71,11 +72,11 @@ class Calculator extends Component {
 
     if (direction === 'right') {
       // Skip moving if cursor is as far right as it can go
-      if (cursorPos === displayedLines[0].length)
+      if (cursorPos === displayedLines[this.state.currentLine].length)
         return console.log('skipping moving right, edge right - ' + this.state.edgeRight + ' edge left - ' + this.state.edgeLeft);
 
       // Move an extra spot if it is moving through "ln"
-      if (displayedLines[0][cursorPos] === 'l') {
+      if (displayedLines[this.state.currentLine][cursorPos] === 'l') {
         // Move the screen right once if the full "ln" isn't on screen
         if (cursorPos === this.state.edgeRight - 1 || cursorPos === this.state.edgeRight) {
           this.setState(currentState => {
@@ -90,7 +91,6 @@ class Calculator extends Component {
       // Move the whole screen one step right if it is on the right edge
       if (cursorPos === this.state.edgeRight)
         this.setState(currentState => {
-          console.log('working with', displayedLines[0][cursorPos]);
           currentState.edgeRight = currentState.edgeRight + 1;
           currentState.edgeLeft = currentState.edgeLeft + 1;
           return currentState;
@@ -108,7 +108,7 @@ class Calculator extends Component {
         return console.log('skipping moving left, edge right - ' + this.state.edgeRight + ' edge left - ' + this.state.edgeLeft);
 
       // Move an extra spot if it is moving through "ln"
-      if (displayedLines[0][cursorPos-1] === 'n') {
+      if (displayedLines[this.state.currentLine][cursorPos-1] === 'n') {
         // Move the screen left once if the full "ln" isn't on screen
         if (cursorPos === this.state.edgeLeft + 1 || cursorPos === this.state.edgeLeft) {
           this.setState(currentState => {
@@ -137,22 +137,37 @@ class Calculator extends Component {
     else { console.log('unknown direction given to move cursor: ' + direction); }
   };
 
+  moveLines = (direction) => {
+    if (direction === 'up') {
+      if (this.state.currentLine < this.state.displayedLines.length - 7) {
+
+        this.setState(currentState => {
+          return { currentLine : currentState.currentLine + 1 }
+        })
+      }
+    }
+
+    else if (direction === 'down') {
+      if (this.state.currentLine > 0) {
+        this.setState(currentState => {
+          return { currentLine : currentState.currentLine - 1 }
+        })
+      }
+    }
+
+    else { console.log('unknown direction given to move lines:', direction); }
+  }
+
+// ------- level one --------
+
   specialButton = (symbol) => {
-    if (symbol === '=') {
-      this.setState( this.equalsButtonState() );
-    }
-    if (symbol === '\u2190') {
-      this.moveCursor('left');
-    }
-    if (symbol === '\u2192') {
-      this.moveCursor('right');
-    }
-    if (symbol === 'AC') {
-      this.setState( this.acButtonState() );
-    }
-    if (symbol === '\u232B') {
-      this.setState( this.deleteButtonState() );
-    }
+    if (symbol === '=')           this.equalsButton();
+    else if (symbol === '\u2190') this.moveCursor('left');
+    else if (symbol === '\u2192') this.moveCursor('right');
+    else if (symbol === 'AC')     this.acButton();
+    else if (symbol === '\u232B') this.deleteButton();
+    else if (symbol === '\u2191') this.moveLines('up');
+    else if (symbol === '\u2193') this.moveLines('down');
   }
 
   specialChar = (symbol) => {
@@ -190,11 +205,13 @@ class Calculator extends Component {
     }
   }
 
-// ------- level one ---------
+// ------- level two ---------
 
   addSymbol = (symbol, cursorPos) => {
-    //                                 left                   right                                     delete
-    if (symbol === '=' || symbol === '\u2190' || symbol === '\u2192' || symbol === 'AC' || symbol === '\u232B' ) {
+    //                                 left                   right
+    if (symbol === '=' || symbol === '\u2190' || symbol === '\u2192' || symbol === 'AC' ||
+    //               delete                  up                    down
+        symbol === '\u232B' || symbol === '\u2191' || symbol === '\u2193') {
       this.specialButton( symbol );
       return 'specialButton';
     }
@@ -213,7 +230,7 @@ class Calculator extends Component {
     console.log('After adding symbol, edgeRight:', this.state.edgeRight, 'edgeLeft:', this.state.edgeLeft);
   };
 
-// ------- level two ---------
+// ------- level three ---------
 
   onClick = (theButton) => {
     const { symbol } = theButton.state;
@@ -246,6 +263,7 @@ class Calculator extends Component {
           edgeRight = {this.state.edgeRight}
           edgeLeft = {this.state.edgeLeft}
           cursorPos = {this.state.cursorPos}
+          currentLine = {this.state.currentLine}
         />
         <div style={ {height : '22px' } }/>
         <CalcButtons buttons = {this.state.buttons} click = {this.onClick} />
