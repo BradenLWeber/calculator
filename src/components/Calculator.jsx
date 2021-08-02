@@ -78,9 +78,9 @@ class Calculator extends Component {
       if (cursorPos === displayedLines[this.state.currentLine].length)
         return console.log('skipping moving right, edge right - ' + this.state.edgeRight + ' edge left - ' + this.state.edgeLeft);
 
-      // Move an extra spot if it is moving through "ln"
+      // Move an extra spot if it is moving through 'ln'
       if (displayedLines[this.state.currentLine][cursorPos] === 'l') {
-        // Move the screen right once if the full "ln" isn't on screen
+        // Move the screen right once if the full 'ln' isn't on screen
         if (cursorPos === this.state.edgeRight - 1 || cursorPos === this.state.edgeRight) {
           this.setState(currentState => {
             return {edgeRight : currentState.edgeRight + 1, edgeLeft : currentState.edgeLeft + 1}})
@@ -110,9 +110,9 @@ class Calculator extends Component {
       if (cursorPos === 0)
         return console.log('skipping moving left, edge right - ' + this.state.edgeRight + ' edge left - ' + this.state.edgeLeft);
 
-      // Move an extra spot if it is moving through "ln"
+      // Move an extra spot if it is moving through 'ln'
       if (displayedLines[this.state.currentLine][cursorPos-1] === 'n') {
-        // Move the screen left once if the full "ln" isn't on screen
+        // Move the screen left once if the full 'ln' isn't on screen
         if (cursorPos === this.state.edgeLeft + 1 || cursorPos === this.state.edgeLeft) {
           this.setState(currentState => {
             return {edgeRight : currentState.edgeRight - 1, edgeLeft : currentState.edgeLeft - 1}})
@@ -145,11 +145,14 @@ class Calculator extends Component {
       if (this.state.currentLine < this.state.displayedLines.length-1) {
         this.setState(currentState => {
           // If currentLine pushes off the screen, move the screen up
-          if (currentState.edgeTop === currentState.currentLine + 1 && currentState.edgeTop !== currentState.displayedLines.length) {
+          if (currentState.edgeTop === currentState.currentLine + 1
+            && currentState.edgeTop !== currentState.displayedLines.length
+            && currentState.displayedLines.length > 3) {
+            console.log('made it', currentState.edgeTop, currentState.currentLine);
             currentState.edgeTop = currentState.edgeTop + 1;
             currentState.edgeBottom = currentState.edgeBottom + 1;
           }
-          // If moving from the bottom line, change "=" to "copy"
+          // If moving from the bottom line, change '=' to 'copy'
           if (currentState.currentLine === 0) currentState.buttons[4][3] = 'copy';
           return {
             currentLine : currentState.currentLine + 1,
@@ -168,7 +171,7 @@ class Calculator extends Component {
             currentState.edgeTop = currentState.edgeTop - 1;
             currentState.edgeBottom = currentState.edgeBottom - 1;
           }
-          // If moving from the bottom line, change "copy" to "="
+          // If moving from the bottom line, change 'copy' to '='
           if (currentState.currentLine === 1) currentState.buttons[4][3] = '=';
           return {
             currentLine : currentState.currentLine - 1,
@@ -193,7 +196,28 @@ class Calculator extends Component {
   }
 
   copyButton = () => {
-    //
+    this.setState(currentState => {
+      currentState.displayedLines[0] = currentState.displayedLines[0]
+                                          .slice(0, currentState.cursorPos)
+                                          .concat(currentState.displayedLines[currentState.currentLine])
+                                          .concat(currentState.displayedLines[0].slice(currentState.cursorPos));
+
+      currentState.edgeRight = currentState.edgeRight + currentState.displayedLines[currentState.currentLine].length;
+      currentState.edgeLeft = currentState.edgeRight - constants.CHARS_ON_SCREEN;
+      if (currentState.edgeLeft < 0) currentState.edgeLeft = 0;
+
+      currentState.buttons[4][3] = '=';
+      currentState.cursorPos = currentState.cursorPos + currentState.displayedLines[currentState.currentLine].length;
+
+      return {
+        displayedLines : currentState.displayedLines,
+        currentLine : 0,
+        edgeRight : currentState.edgeRight,
+        edgeLeft : currentState.edgeLeft,
+        buttons : currentState.buttons,
+        edgeBottom : 0
+      }
+    })
   }
 
 // ------- level one --------
