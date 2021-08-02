@@ -67,27 +67,74 @@ class Calculator extends Component {
   };
 
   moveCursor = (direction) => {
-    const { cursorPos } = this.state;
+    const { cursorPos, displayedLines } = this.state;
 
     if (direction === 'right') {
-      if (cursorPos === this.state.displayedLines[0].length)
+      // Skip moving if cursor is as far right as it can go
+      if (cursorPos === displayedLines[0].length)
         return console.log('skipping moving right, edge right - ' + this.state.edgeRight + ' edge left - ' + this.state.edgeLeft);
+
+      // Move an extra spot if it is moving through "ln"
+      if (displayedLines[0][cursorPos] === 'l') {
+        // Move the screen right once if the full "ln" isn't on screen
+        if (cursorPos === this.state.edgeRight - 1 || cursorPos === this.state.edgeRight) {
+          this.setState(currentState => {
+            return {edgeRight : currentState.edgeRight + 1, edgeLeft : currentState.edgeLeft + 1}})
+        }
+        // Always move the cursor an extra position because of the ln
+        this.setState(currentState => {
+          return { cursorPos : currentState.cursorPos + 1 };
+        })
+      }
+
+      // Move the whole screen one step right if it is on the right edge
       if (cursorPos === this.state.edgeRight)
-        this.setState({edgeRight : this.state.edgeRight + 1, edgeLeft : this.state.edgeLeft + 1})
-      this.setState({cursorPos: cursorPos + 1});
-      return;
+        this.setState(currentState => {
+          console.log('working with', displayedLines[0][cursorPos]);
+          currentState.edgeRight = currentState.edgeRight + 1;
+          currentState.edgeLeft = currentState.edgeLeft + 1;
+          return currentState;
+        })
+
+      // Always move the cursor forward one
+      this.setState(currentState => {
+        return { cursorPos : currentState.cursorPos + 1 };
+      });
     }
 
     if (direction === 'left') {
-      if (cursorPos <= 0)
+      // Skip moving if cursor is as far left as it can go
+      if (cursorPos === 0)
         return console.log('skipping moving left, edge right - ' + this.state.edgeRight + ' edge left - ' + this.state.edgeLeft);
+
+      // Move an extra spot if it is moving through "ln"
+      if (displayedLines[0][cursorPos-1] === 'n') {
+        // Move the screen left once if the full "ln" isn't on screen
+        if (cursorPos === this.state.edgeLeft + 1 || cursorPos === this.state.edgeLeft) {
+          this.setState(currentState => {
+            return {edgeRight : currentState.edgeRight - 1, edgeLeft : currentState.edgeLeft - 1}})
+        }
+        // Always move the cursor an extra position because of the ln
+        this.setState(currentState => {
+          return { cursorPos : currentState.cursorPos - 1 };
+        })
+      }
+
+      // Move the whole screen one step left if it is on the extendable left edge
       if (cursorPos === this.state.edgeLeft)
-        this.setState({edgeRight : this.state.edgeRight - 1, edgeLeft : this.state.edgeLeft - 1});
-      this.setState({cursorPos: cursorPos - 1});
-      return;
+        this.setState(currentState => {
+          currentState.edgeRight = currentState.edgeRight - 1;
+          currentState.edgeLeft = currentState.edgeLeft - 1;
+          return currentState;
+        })
+
+      // Always move the cursor backward one
+      this.setState(currentState => {
+        return { cursorPos : currentState.cursorPos - 1 };
+      });
     }
 
-    console.log('unknown direction given to move cursor: ' + direction);
+    else { console.log('unknown direction given to move cursor: ' + direction); }
   };
 
   specialButton = (symbol) => {
