@@ -20,7 +20,6 @@ const CalcScreen = (props) => {
     const animate = currentLine === 0 ? 'blinker 1s step-start infinite' : 'none';
     return {
       left : pos + 'px',
-      top : '130px',
       animation : animate
     };
   }

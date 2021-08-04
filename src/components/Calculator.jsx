@@ -83,15 +83,15 @@ evaluateUserExpression = () => {
       if (charBeforeDeleted === 'n') firstCut -= 2;
       else if (charBeforeDeleted === '^') firstCut--;
       else if (charBeforeDeleted === '\u221A') firstCut--;
+      if (newDisplayedLines[0][cursorPos] === ')') secondCut++;
     }
-    else if (charBeingDeleted === 'l') secondCut++;
     else if (charBeingDeleted === 'n') firstCut--;
     newDisplayedLines[0] = newDisplayedLines[0].slice(0, firstCut).concat(newDisplayedLines[0].slice(secondCut))
 
     this.setState ({
       displayedLines: newDisplayedLines,
-      cursorPos: cursorPos - (cursorPos - firstCut),
-      edgeRight : this.state.edgeRight - (cursorPos - firstCut)
+      cursorPos: cursorPos + firstCut - cursorPos,
+      edgeRight : this.state.edgeRight + firstCut - secondCut
     });
   };
 

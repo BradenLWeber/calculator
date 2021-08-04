@@ -49,7 +49,7 @@
 }
 
 .calc-cursor {
-  top: 128px;
+  top: 131px;
   left: 218px;
   position: absolute;
   animation: blinker 1s step-start infinite;
