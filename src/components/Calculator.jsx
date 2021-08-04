@@ -171,9 +171,8 @@ evaluateUserExpression = () => {
         this.setState(currentState => {
           // If currentLine pushes off the screen, move the screen up
           if (currentState.edgeTop === currentState.currentLine + 1
-            && currentState.edgeTop !== currentState.displayedLines.length
-            && currentState.displayedLines.length > 3) {
-            console.log('made it', currentState.edgeTop, currentState.currentLine);
+              && currentState.edgeTop !== currentState.displayedLines.length
+              && currentState.displayedLines.length > 3) {
             currentState.edgeTop = currentState.edgeTop + 1;
             currentState.edgeBottom = currentState.edgeBottom + 1;
           }
@@ -228,12 +227,12 @@ evaluateUserExpression = () => {
                                           .concat(currentState.displayedLines[currentState.currentLine])
                                           .concat(currentState.displayedLines[0].slice(currentState.cursorPos));
 
-      currentState.edgeRight = currentState.edgeRight + currentState.displayedLines[currentState.currentLine].length;
+      currentState.edgeRight += currentState.displayedLines[currentState.currentLine].length;
       currentState.edgeLeft = currentState.edgeRight - constants.CHARS_ON_SCREEN;
       if (currentState.edgeLeft < 0) currentState.edgeLeft = 0;
 
       currentState.buttons[4][3] = '=';
-      currentState.cursorPos = currentState.cursorPos + currentState.displayedLines[currentState.currentLine].length;
+      currentState.cursorPos += currentState.displayedLines[currentState.currentLine].length;
 
       return {
         displayedLines : currentState.displayedLines,
@@ -266,8 +265,8 @@ evaluateUserExpression = () => {
     }
     if (symbol === 'ln') {
       this.setState(currentState => {
-        currentState.edgeRight = currentState.edgeRight + 3;
-        currentState.cursorPos = currentState.cursorPos + 2;
+        currentState.edgeRight += 3;
+        currentState.cursorPos += 2;
         // Correct edgeRight and edgeLeft if ln is being added 3 characters or less from the left side of the screen
         if (currentState.edgeRight > constants.CHARS_ON_SCREEN - 4 && currentState.cursorPos <= currentState.edgeLeft + 5) {
           currentState.edgeRight -= 6 - (currentState.cursorPos - currentState.edgeLeft);
@@ -279,16 +278,16 @@ evaluateUserExpression = () => {
     }
     if (symbol === 'x\u207F') {
       this.setState(currentState => {
-        currentState.edgeRight = currentState.edgeRight + 2;
-        currentState.cursorPos = currentState.cursorPos + 1;
+        currentState.edgeRight += 2;
+        currentState.cursorPos += 1;
         return currentState;
       });
       return '^()';
     }
     if ( symbol === '\u221A' ) {
       this.setState(currentState => {
-        currentState.edgeRight = currentState.edgeRight + 2;
-        currentState.cursorPos = currentState.cursorPos + 1;
+        currentState.edgeRight += 2;
+        currentState.cursorPos += 1;
         return currentState;
       });
       return '\u221A()';

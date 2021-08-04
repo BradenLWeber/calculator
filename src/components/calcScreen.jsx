@@ -29,7 +29,7 @@ const CalcScreen = (props) => {
   }
 
   function haveRightArrow(line) {
-      if (currentLine === getLineNumber(line)) return '\u2770'
+      if (currentLine === getLineNumber(line)) return '\u00AB'
   }
 
   function haveLeftArrow(line) {
@@ -49,32 +49,27 @@ const CalcScreen = (props) => {
         id='calc-screen-arrow-column-left'
         className='calc-arrow-column-left'
       >
-        {haveLeftArrow(3)}
-        <br />
-        {haveLeftArrow(2)}
-        <br />
-        {haveLeftArrow(1)}
-        <br />
+        {haveLeftArrow(3)}<br />
+        {haveLeftArrow(2)}<br />
+        {haveLeftArrow(1)}<br />
         {haveLeftArrow(0)}
       </div>
       <div id='calc-screen-number-column' className='calc-number-column'>
-        {displayLine(3)}
-        <br />
-        {displayLine(2)}
-        <br />
-        {displayLine(1)}
-        <br />
+        {displayLine(3)}<br />
+        {displayLine(2)}<br />
+        {displayLine(1)}<br />
         {currentLine === 0
           ? lines[0].slice(edgeLeft, edgeRight)
-          : displayLine(0)}
+          : displayLine(0)
+        }
       </div>
       <div
         id='calc-screen-arrow-column-right'
         className='calc-arrow-column-right'
       >
-        {haveRightArrow(3)}<br />
-        {haveRightArrow(2)}<br />
-        {haveRightArrow(1)}<br />
+        {haveRightArrow(3)}<div style={ {height : '34px' } }/>
+        {haveRightArrow(2)}<div style={ {height : '34px' } }/>
+        {haveRightArrow(1)}<div style={ {height : '34px' } }/>
         {currentLine === 0 ? edgeRight < lines[currentLine].length && '>' : haveRightArrow(0)}
       </div>
       <div
