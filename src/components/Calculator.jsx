@@ -221,6 +221,7 @@ evaluateUserExpression = () => {
   }
 
   copyButton = () => {
+    if (this.state.displayedLines[this.state.currentLine] === 'Error') return;
     this.setState(currentState => {
       currentState.displayedLines[0] = currentState.displayedLines[0]
                                           .slice(0, currentState.cursorPos)
