@@ -9,10 +9,7 @@ Things next:
 - - Can fix digits after decimal with Number(4.3e7).fixed(7)
 - Deleting ln puts the cursor at the wrong spot
 - Deleting parentheses attached to special operation should delete operation too
-- Left side arrows need to match lines when up/down arrows are used
-- Try/catch block so that bad inputs produce "error"
 
 Things on the list:
-- Make math lines functional
-- - Make it add * between parentheses in math lines before it evaluates
-- Make keyboard buttons
+- Evaluate user line function
+- Make keyboard buttons work?

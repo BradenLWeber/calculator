@@ -7,7 +7,6 @@ const CalcScreen = (props) => {
 
   function displayLine(rowNum) {
     const line = lines[getLineNumber(rowNum)];
-    console.log('line', line, 'rowNum', rowNum, 'getLine', getLineNumber(rowNum));
     if (lines.length > rowNum) {
         if (line.length < CHARS_ON_SCREEN) return line;
         return line.slice(line.length - CHARS_ON_SCREEN);
@@ -30,8 +29,15 @@ const CalcScreen = (props) => {
       return edgeBottom + line;
   }
 
-  function haveArrow(line) {
+  function haveRightArrow(line) {
       if (currentLine === getLineNumber(line)) return '\u2770'
+  }
+
+  function haveLeftArrow(line) {
+    if (line === 0) {
+      if (currentLine === 0 && lines[0].length >= CHARS_ON_SCREEN) return '<';
+    }
+    return lines.length >= line+1 && lines[edgeBottom+line].length >= CHARS_ON_SCREEN ? '<' : ''
   }
 
   return (
@@ -44,13 +50,13 @@ const CalcScreen = (props) => {
         id='calc-screen-arrow-column-left'
         className='calc-arrow-column-left'
       >
-        {lines.length >= 4 && lines[3].length >= CHARS_ON_SCREEN && '<'}
+        {haveLeftArrow(3)}
         <br />
-        {lines.length >= 3 && lines[2].length >= CHARS_ON_SCREEN && '<'}
+        {haveLeftArrow(2)}
         <br />
-        {lines.length >= 2 && lines[1].length >= CHARS_ON_SCREEN && '<'}
+        {haveLeftArrow(1)}
         <br />
-        {edgeLeft > 0 && '<'}
+        {haveLeftArrow(0)}
       </div>
       <div id='calc-screen-number-column' className='calc-number-column'>
         {displayLine(3)}
@@ -67,10 +73,10 @@ const CalcScreen = (props) => {
         id='calc-screen-arrow-column-right'
         className='calc-arrow-column-right'
       >
-        {haveArrow(3)}<br />
-        {haveArrow(2)}<br />
-        {haveArrow(1)}<br />
-        {currentLine === 0 ? edgeRight < lines[currentLine].length && '>' : haveArrow(0)}
+        {haveRightArrow(3)}<br />
+        {haveRightArrow(2)}<br />
+        {haveRightArrow(1)}<br />
+        {currentLine === 0 ? edgeRight < lines[currentLine].length && '>' : haveRightArrow(0)}
       </div>
       <div
         id='calc-screen-cursor-display'

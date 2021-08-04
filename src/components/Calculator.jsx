@@ -28,15 +28,17 @@ class Calculator extends Component {
     ],
   };
 
-// ----- level zero --------
+// ----- level - one --------
 
-  evaluateUserExpression = () => {
-    try {
-      return String(evaluate(this.state.displayedLines[0]));
-    } catch {
-      return 'Error';
-    }
+evaluateUserExpression = () => {
+  try {
+    return String(evaluate(this.state.displayedLines[0]));
+  } catch {
+    return 'Error';
   }
+}
+
+// ----- level zero --------
 
   equalsButton = () => {
     const evaluatedLine = this.evaluateUserExpression();
