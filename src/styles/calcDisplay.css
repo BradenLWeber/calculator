@@ -1,20 +1,20 @@
 .calc-screen {
-  width: 368px;
+  width: 434px;
   height: 140px;
   margin-left: 16.5px;
 }
 
 .calc-body {
   background-color: rgb(51, 45, 99);
-  width: 407px;
-  height: 390px;
+  width: 473px;
+  height: 427px;
   border-radius: 10px;
 }
 
 .calc-number-column {
   background: rgb(202, 202, 202);
   font-size: 30px;
-  width: 319px;
+  width: 385px;
   height: 140px;
   text-align: right;
   padding-right: 5px;

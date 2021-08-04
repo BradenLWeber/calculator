@@ -1,1 +1,1 @@
-export const CHARS_ON_SCREEN = 19;
+export const CHARS_ON_SCREEN = 23;

@@ -1,12 +1,12 @@
 .button-operator {
   background-color: lightgray;
   color: black;
-  width: 60px;
-  height: 30px;
+  width: 70px;
+  height: 37px;
   border-radius: 8px;
   display: inline-block;
   text-align: center;
-  font-size: 16px;
+  font-size: 19px;
   margin: 4px 2px;
   transition-duration: 0.2s;
   cursor: pointer;
@@ -20,12 +20,12 @@
 .button-left-side {
   background-color: lightgray;
   color: black;
-  width: 60px;
-  height: 30px;
+  width: 70px;
+  height: 37px;
   border-radius: 8px;
   display: inline-block;
   text-align: center;
-  font-size: 16px;
+  font-size: 19px;
   margin: 4px 2px;
   margin-left: 13.5px;
   transition-duration: 0.2s;
@@ -40,12 +40,12 @@
 .button-up-down {
   background-color: rgb(151, 185, 216);
   color: black;
-  width: 124px;
-  height: 30px;
+  width: 144px;
+  height: 37px;
   border-radius: 8px;
   display: inline-block;
   text-align: center;
-  font-size: 16px;
+  font-size: 19px;
   margin: 4px 2px;
   transition-duration: 0.2s;
   cursor: pointer;
@@ -60,12 +60,12 @@
 .button-left {
   background-color: rgb(151, 185, 216);
   color: black;
-  width: 60px;
-  height: 30px;
+  width: 70px;
+  height: 37px;
   border-radius: 8px;
   display: inline-block;
   text-align: center;
-  font-size: 16px;
+  font-size: 19px;
   margin: 4px 2px;
   margin-left: 13.5px;
   transition-duration: 0.2s;
@@ -80,12 +80,12 @@
 .button-right {
   background-color: rgb(151, 185, 216);
   color: black;
-  width: 60px;
-  height: 30px;
+  width: 70px;
+  height: 37px;
   border-radius: 8px;
   display: inline-block;
   text-align: center;
-  font-size: 16px;
+  font-size: 19px;
   margin: 4px 2px;
   transition-duration: 0.2s;
   cursor: pointer;
@@ -99,12 +99,12 @@
 .button-equals {
   background-color: lightgreen;
   color: black;
-  width: 60px;
-  height: 30px;
+  width: 70px;
+  height: 37px;
   border-radius: 8px;
   display: inline-block;
   text-align: center;
-  font-size: 16px;
+  font-size: 19px;
   margin: 4px 2px;
   transition-duration: 0.2s;
   cursor: pointer;
@@ -118,12 +118,12 @@
 .button-delete {
   background-color: lightcoral;
   color: black;
-  width: 60px;
-  height: 30px;
+  width: 70px;
+  height: 37px;
   border-radius: 8px;
   display: inline-block;
   text-align: center;
-  font-size: 14px;
+  font-size: 15px;
   margin: 4px 2px;
   transition-duration: 0.2s;
   cursor: pointer;
@@ -137,12 +137,12 @@
 .button-ac {
   background-color: lightcoral;
   color: black;
-  width: 60px;
-  height: 30px;
+  width: 70px;
+  height: 37px;
   border-radius: 8px;
   display: inline-block;
   text-align: center;
-  font-size: 16px;
+  font-size: 19px;
   margin: 4px 2px;
   margin-right: 13.5px;
   transition-duration: 0.2s;
@@ -157,12 +157,12 @@
 .button-number {
   background-color: rgb(161, 161, 161);
   color: black;
-  width: 60px;
-  height: 30px;
+  width: 70px;
+  height: 37px;
   border-radius: 8px;
   display: inline-block;
   text-align: center;
-  font-size: 16px;
+  font-size: 19px;
   margin: 4px 2px;
   transition-duration: 0.2s;
   cursor: pointer;

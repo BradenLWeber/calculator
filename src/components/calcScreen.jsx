@@ -16,7 +16,7 @@ const CalcScreen = (props) => {
   }
 
   function putCursor() {
-    const pos = -5.5 + 16.5 * (22 - edgeRight + cursorPos);
+    const pos = 61 + 16.5 * (22 - edgeRight + cursorPos);
     const animate = currentLine === 0 ? 'blinker 1s step-start infinite' : 'none';
     return {
       left : pos + 'px',
@@ -35,9 +35,9 @@ const CalcScreen = (props) => {
 
   function haveLeftArrow(line) {
     if (line === 0) {
-      if (currentLine === 0 && lines[0].length >= CHARS_ON_SCREEN) return '<';
+      if (currentLine === 0 && lines[0].length > CHARS_ON_SCREEN) return '<';
     }
-    return lines.length >= line+1 && lines[edgeBottom+line].length >= CHARS_ON_SCREEN ? '<' : ''
+    return lines.length >= line+1 && lines[edgeBottom+line].length > CHARS_ON_SCREEN ? '<' : ''
   }
 
   return (
