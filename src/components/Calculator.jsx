@@ -28,14 +28,13 @@ class Calculator extends Component {
     ],
   };
 
-// ----- level - one --------
+// ----- level zero --------
 
 evaluateUserExpression = () => {
   let userLine = this.state.displayedLines[0];
   userLine = userLine.replace(/ln/g, 'log');
   userLine = userLine.replace(/\u221A/g, 'sqrt');
   userLine = userLine.replace(/\u00F7/g, '/');
-  console.log('Braden', userLine);
   try {
     return String(evaluate(userLine));
   } catch {
@@ -43,7 +42,27 @@ evaluateUserExpression = () => {
   }
 }
 
-// ----- level zero --------
+handleKeyPress = (event) => {
+  if ('0123456789.+-*!=()'.includes(event.key)) this.clicked(event.key);
+  else if (event.key === '/') this.clicked('\u00F7');
+  else if (event.key.toLowerCase() === 'l') this.clicked('ln');
+  else if (event.key === '^') this.clicked('x\u207F');
+  else if (event.key.toLowerCase() === 's') this.clicked('\u221A');
+  else if (event.key.toLowerCase() === 'a') this.clicked('AC');
+  else if (event.key.toLowerCase() === 'c' && this.state.buttons[4][3] === 'copy') this.clicked('copy');
+  console.log('key pressed:', event.key);
+}
+
+handleDelete = (event) => {
+  if (event.keyCode === 8) this.clicked('\u232B');
+  else if (event.keyCode === 37) this.clicked('\u2190');
+  else if (event.keyCode === 38) this.clicked('\u2191');
+  else if (event.keyCode === 39) this.clicked('\u2192');
+  else if (event.keyCode === 40) this.clicked('\u2193');
+  console.log('keyCode:', event.keyCode);
+}
+
+// ----- level one --------
 
   equalsButton = () => {
     const evaluatedLine = this.evaluateUserExpression();
@@ -245,7 +264,7 @@ evaluateUserExpression = () => {
     })
   }
 
-// ------- level one --------
+// ------- level two --------
 
   specialButton = (symbol) => {
     if (symbol === '\u2191') this.moveLines('up');
@@ -294,7 +313,7 @@ evaluateUserExpression = () => {
     }
   }
 
-// ------- level two ---------
+// ------- level three ---------
 
   addSymbol = (symbol, cursorPos) => {
     //                                 left                   right
@@ -305,6 +324,7 @@ evaluateUserExpression = () => {
       return 'specialButton';
     }
 
+    // Skip the other buttons if the user isn't currently on the bottom line
     if (this.state.currentLine !== 0) return 'specialButton';
 
     //                                                      x^n                   sqrt()
@@ -312,19 +332,20 @@ evaluateUserExpression = () => {
       symbol = this.specialChar( symbol );
     }
 
-    const displayedLines = this.state.displayedLines;
-    displayedLines[0] = displayedLines[0]
+    this.setState(currentState => {
+      currentState.displayedLines[0] = currentState.displayedLines[0]
       .slice(0, cursorPos)
       .concat(symbol)
-      .concat(displayedLines[0].slice(cursorPos));
+      .concat(currentState.displayedLines[0].slice(cursorPos));
+      return { displayedLines : currentState.displayedLines };
+    })
 
     console.log('After adding symbol, edgeRight:', this.state.edgeRight, 'edgeLeft:', this.state.edgeLeft);
   };
 
 // ------- level three ---------
 
-  onClick = (theButton) => {
-    const { symbol } = theButton.state;
+  clicked = (symbol) => {
     const { cursorPos } = this.state;
 
     if (this.addSymbol(symbol, cursorPos) === 'specialButton') return;
@@ -340,6 +361,12 @@ evaluateUserExpression = () => {
     });
   };
 
+  // ------ level four ------
+
+  onClick = (theButton) => {
+    this.clicked(theButton.state.symbol);
+  }
+
   render() {
     console.log('-------------------');
     console.log('displayedLines during render: ', this.state.displayedLines);
@@ -347,7 +374,7 @@ evaluateUserExpression = () => {
     console.log('CursorPos:', this.state.cursorPos);
 
     return (
-      <div id='calculator-body' className='calc-body'>
+      <div id='calculator-body' className='calc-body' onKeyPress={this.handleKeyPress} onKeyDown = {this.handleDelete}>
         <br />
         <CalcScreen
           lines = {this.state.displayedLines}
