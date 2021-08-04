@@ -3,6 +3,7 @@ import CalcButtons from './calcButtons';
 import CalcScreen from './calcScreen';
 import '../styles/calcDisplay.css';
 import * as constants from '../constants/constants';
+import { evaluate } from 'mathjs';
 
 class Calculator extends Component {
   state = {
@@ -13,7 +14,6 @@ class Calculator extends Component {
     edgeBottom: 0,
     currentLine: 0,
     displayedLines: [''],
-    mathLines: ['', '', '', ''],
     buttons: [
                             // delete
       ['x!', 'ln', '(', ')', '\u232B', 'AC'],
@@ -30,13 +30,23 @@ class Calculator extends Component {
 
 // ----- level zero --------
 
+  evaluateUserExpression = () => {
+    try {
+      return String(evaluate(this.state.displayedLines[0]));
+    } catch {
+      return 'Error';
+    }
+  }
+
   equalsButton = () => {
+    const evaluatedLine = this.evaluateUserExpression();
+
     this.setState({
       cursorPos: 0,
       edgeRight: 0,
       edgeLeft: 0,
       edgeTop: this.state.edgeTop === 0 ? 2 : 4,
-      displayedLines: ['', String(eval(this.state.displayedLines[0]))].concat(this.state.displayedLines)
+      displayedLines: ['', evaluatedLine].concat(this.state.displayedLines)
     });
   };
 
