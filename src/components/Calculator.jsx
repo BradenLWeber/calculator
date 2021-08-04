@@ -31,8 +31,13 @@ class Calculator extends Component {
 // ----- level - one --------
 
 evaluateUserExpression = () => {
+  let userLine = this.state.displayedLines[0];
+  userLine = userLine.replace(/ln/g, 'log');
+  userLine = userLine.replace(/\u221A/g, 'sqrt');
+  userLine = userLine.replace(/\u00F7/g, '/');
+  console.log('Braden', userLine);
   try {
-    return String(evaluate(this.state.displayedLines[0]));
+    return String(evaluate(userLine));
   } catch {
     return 'Error';
   }
