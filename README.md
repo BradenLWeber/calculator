@@ -6,3 +6,4 @@ Things next:
 - Bug hunt!
 - Visual design improvements
 - Rewriting inefficient code
+- Gotta fix sqrt and ^ when they are on the left side of the screen
