@@ -50,7 +50,6 @@ handleKeyPress = (event) => {
   else if (event.key.toLowerCase() === 's') this.clicked('\u221A');
   else if (event.key.toLowerCase() === 'a') this.clicked('AC');
   else if (event.key.toLowerCase() === 'c' && this.state.buttons[4][3] === 'copy') this.clicked('copy');
-  console.log('key pressed:', event.key);
 }
 
 handleDelete = (event) => {
@@ -384,7 +383,7 @@ handleDelete = (event) => {
           cursorPos = {this.state.cursorPos}
           currentLine = {this.state.currentLine}
         />
-        <div style={ {height : '22px' } }/>
+        <div style={ {height : '27px' } }/>
         <CalcButtons
           buttons = {this.state.buttons}
           click = {this.onClick}

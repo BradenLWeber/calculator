@@ -1,13 +1,14 @@
 .calc-screen {
   width: 434px;
   height: 140px;
-  margin-left: 16.5px;
+  margin-left: 23px;
+  margin-top: 5px;
 }
 
 .calc-body {
   background-color: rgb(51, 45, 99);
-  width: 473px;
-  height: 427px;
+  width: 481px;
+  height: 435px;
   border-radius: 10px;
 }
 
@@ -49,7 +50,7 @@
 }
 
 .calc-cursor {
-  top: 131px;
+  top: 134px;
   left: 218px;
   position: absolute;
   animation: blinker 1s step-start infinite;

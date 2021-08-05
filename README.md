@@ -4,3 +4,4 @@ I am not breaking any new ground here, but the practical application of the thin
 
 Things next:
 - Bug hunt!
+- Design improvements

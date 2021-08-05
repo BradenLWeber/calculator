@@ -27,7 +27,7 @@
   text-align: center;
   font-size: 19px;
   margin: 4px 2px;
-  margin-left: 13.5px;
+  margin-left: 20.5px;
   transition-duration: 0.2s;
   cursor: pointer;
 }
@@ -49,7 +49,7 @@
   margin: 4px 2px;
   transition-duration: 0.2s;
   cursor: pointer;
-  margin-left: 13.5px;
+  margin-left: 20.5px;
 }
 
 .button-up-down:hover {
@@ -67,7 +67,7 @@
   text-align: center;
   font-size: 19px;
   margin: 4px 2px;
-  margin-left: 13.5px;
+  margin-left: 20.5px;
   transition-duration: 0.2s;
   cursor: pointer;
 }
