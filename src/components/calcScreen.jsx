@@ -34,9 +34,10 @@ const CalcScreen = (props) => {
 
   function haveLeftArrow(line) {
     if (line === 0) {
-      if (currentLine === 0 && lines[0].length > CHARS_ON_SCREEN) return '<';
+      if (currentLine === 0 && lines[0].length > CHARS_ON_SCREEN && edgeLeft !== 0) return '<';
+    } else {
+      if (lines.length >= line+1 && lines[edgeBottom+line].length > CHARS_ON_SCREEN) return '<';
     }
-    return lines.length >= line+1 && lines[edgeBottom+line].length > CHARS_ON_SCREEN ? '<' : ''
   }
 
   return (
