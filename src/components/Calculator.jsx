@@ -99,7 +99,6 @@ handleDelete = (event) => {
     if (charBeingDeleted === '(') {
       const charBeforeDeleted = newDisplayedLines[0][cursorPos-2];
       if (charBeforeDeleted === 'n') firstCut -= 2;
-      else if (charBeforeDeleted === '^') firstCut--;
       else if (charBeforeDeleted === '\u221A') firstCut--;
       if (newDisplayedLines[0][cursorPos] === ')') secondCut++;
     }
@@ -294,15 +293,8 @@ handleDelete = (event) => {
       });
       return 'ln()';
     }
-    if (symbol === 'x\u207F') {
-      this.setState(currentState => {
-        currentState.edgeRight += 2;
-        currentState.cursorPos += 1;
-        return currentState;
-      });
-      return '^()';
-    }
-    if ( symbol === '\u221A' ) {
+    if (symbol === 'x\u207F') return '^';
+    if (symbol === '\u221A') {
       this.setState(currentState => {
         currentState.edgeRight += 2;
         currentState.cursorPos += 1;
