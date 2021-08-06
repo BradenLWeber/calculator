@@ -9,3 +9,4 @@ Things next:
 - - Shouldn't be able to copy infinity, or NaN
 - Visual design improvements
 - Rewriting inefficient code
+- Gotta fix sqrt and ^ when they are on the left side of the screen
