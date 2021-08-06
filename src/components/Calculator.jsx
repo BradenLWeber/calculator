@@ -36,7 +36,9 @@ evaluateUserExpression = () => {
   userLine = userLine.replace(/\u221A/g, 'sqrt');
   userLine = userLine.replace(/\u00F7/g, '/');
   try {
-    return String(evaluate(userLine));
+    const answer = String(evaluate(userLine));
+    if (answer === 'NaN') throw Error;
+    return answer;
   } catch {
     return 'Error';
   }
@@ -237,7 +239,9 @@ handleDelete = (event) => {
   }
 
   copyButton = () => {
-    if (this.state.displayedLines[this.state.currentLine] === 'Error') return;
+    if (this.state.displayedLines[this.state.currentLine] === 'Error'
+     || this.state.displayedLines[this.state.currentLine] === 'Infinity') return;
+
     this.setState(currentState => {
       currentState.displayedLines[0] = currentState.displayedLines[0]
                                           .slice(0, currentState.cursorPos)
@@ -286,7 +290,7 @@ handleDelete = (event) => {
         currentState.cursorPos += 2;
         // Correct edgeRight and edgeLeft if ln is being added 3 characters or less from the left side of the screen
         if (currentState.edgeRight > constants.CHARS_ON_SCREEN - 4 && currentState.cursorPos <= currentState.edgeLeft + 5) {
-          currentState.edgeRight -= 6 - (currentState.cursorPos - currentState.edgeLeft);
+          currentState.edgeRight -= 6 - (currentState.cursorPos - currentState.edgeLeft) - constants.CHARS_ON_SCREEN + (currentState.edgeRight - 3 - currentState.edgeLeft);
           currentState.edgeLeft = currentState.edgeRight - constants.CHARS_ON_SCREEN;
         }
         return currentState;
@@ -298,6 +302,11 @@ handleDelete = (event) => {
       this.setState(currentState => {
         currentState.edgeRight += 2;
         currentState.cursorPos += 1;
+        // Correct edgeRight and edgeLeft if sqrt is being added 2 characters or less from the left side of the screen
+        if (currentState.edgeRight > constants.CHARS_ON_SCREEN - 3 && currentState.cursorPos <= currentState.edgeLeft + 4) {
+          currentState.edgeRight -= 5 - (currentState.cursorPos - currentState.edgeLeft) - constants.CHARS_ON_SCREEN + (currentState.edgeRight - 3 - currentState.edgeLeft);
+          currentState.edgeLeft = currentState.edgeRight - constants.CHARS_ON_SCREEN;
+        }
         return currentState;
       });
       return '\u221A()';
