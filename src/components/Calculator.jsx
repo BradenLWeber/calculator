@@ -290,7 +290,7 @@ handleDelete = (event) => {
         currentState.cursorPos += 2;
         // Correct edgeRight and edgeLeft if ln is being added 3 characters or less from the left side of the screen
         if (currentState.edgeRight > constants.CHARS_ON_SCREEN - 4 && currentState.cursorPos <= currentState.edgeLeft + 5) {
-          currentState.edgeRight -= 6 - (currentState.cursorPos - currentState.edgeLeft) - constants.CHARS_ON_SCREEN + (currentState.edgeRight - 3 - currentState.edgeLeft);
+          currentState.edgeRight += -3 + currentState.cursorPos + constants.CHARS_ON_SCREEN - currentState.edgeRight;
           currentState.edgeLeft = currentState.edgeRight - constants.CHARS_ON_SCREEN;
         }
         return currentState;
