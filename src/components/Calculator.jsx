@@ -103,14 +103,25 @@ handleDelete = (event) => {
       if (charBeforeDeleted === 'n') firstCut -= 2;
       else if (charBeforeDeleted === '\u221A') firstCut--;
       if (newDisplayedLines[0][cursorPos] === ')') secondCut++;
-    }
-    else if (charBeingDeleted === 'n') firstCut--;
-    newDisplayedLines[0] = newDisplayedLines[0].slice(0, firstCut).concat(newDisplayedLines[0].slice(secondCut))
+    } else if (charBeingDeleted === 'n') firstCut--;
 
-    this.setState ({
-      displayedLines: newDisplayedLines,
-      cursorPos: cursorPos + firstCut - cursorPos,
-      edgeRight : this.state.edgeRight + firstCut - secondCut
+    newDisplayedLines[0] = newDisplayedLines[0].slice(0, firstCut).concat(newDisplayedLines[0].slice(secondCut))
+    let newEdgeRight = this.state.edgeRight + firstCut - secondCut;
+    let newEdgeLeft = newEdgeRight - constants.CHARS_ON_SCREEN;
+    if (newEdgeLeft < 0) {
+      if (this.state.displayedLines[0].length >= constants.CHARS_ON_SCREEN) {
+        newEdgeRight = constants.CHARS_ON_SCREEN;
+      }
+      newEdgeLeft = 0;
+    }
+
+    this.setState (currentState => {
+      return {
+        displayedLines: newDisplayedLines,
+        cursorPos: firstCut,
+        edgeRight : newEdgeRight,
+        edgeLeft : newEdgeLeft
+      }
     });
   };
 
@@ -289,7 +300,7 @@ handleDelete = (event) => {
         currentState.edgeRight += 3;
         currentState.cursorPos += 2;
         // Correct edgeRight and edgeLeft if ln is being added 3 characters or less from the left side of the screen
-        if (currentState.edgeRight > constants.CHARS_ON_SCREEN - 4 && currentState.cursorPos <= currentState.edgeLeft + 5) {
+        if (currentState.edgeRight > constants.CHARS_ON_SCREEN + 1 && currentState.cursorPos <= currentState.edgeLeft + 5) {
           currentState.edgeRight += -3 + currentState.cursorPos + constants.CHARS_ON_SCREEN - currentState.edgeRight;
           currentState.edgeLeft = currentState.edgeRight - constants.CHARS_ON_SCREEN;
         }
@@ -337,7 +348,15 @@ handleDelete = (event) => {
       .slice(0, cursorPos)
       .concat(symbol)
       .concat(currentState.displayedLines[0].slice(cursorPos));
-      return { displayedLines : currentState.displayedLines };
+      if (currentState.cursorPos === currentState.edgeLeft && currentState.displayedLines[0].length > constants.CHARS_ON_SCREEN) {
+        currentState.edgeLeft -= 1;
+        currentState.edgeRight -= 1;
+      }
+      return {
+        displayedLines : currentState.displayedLines,
+        edgeLeft : currentState.edgeLeft,
+        edgeRight : currentState.edgeRight
+      };
     })
 
     console.log('After adding symbol, edgeRight:', this.state.edgeRight, 'edgeLeft:', this.state.edgeLeft);
