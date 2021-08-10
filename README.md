@@ -7,3 +7,5 @@ Things next:
 - Visual design improvements
 - Rewriting inefficient code
 - Could I have the ability to click at different parts of the displayed line?
+- Run Prettier?
+- Add buttons to let user decide height and width?

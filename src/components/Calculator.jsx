@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import CalcButtons from './calcButtons';
 import CalcScreen from './calcScreen';
 import '../styles/calcDisplay.css';
-import * as constants from '../constants/constants';
+import { CHARS_ON_SCREEN, CHAR_SIZE } from '../constants/constants';
 import { evaluate } from 'mathjs';
 
 class Calculator extends Component {
@@ -60,7 +60,6 @@ handleDelete = (event) => {
   else if (event.keyCode === 38) this.clicked('\u2191');
   else if (event.keyCode === 39) this.clicked('\u2192');
   else if (event.keyCode === 40) this.clicked('\u2193');
-  console.log('keyCode:', event.keyCode);
 }
 
 // ----- level one --------
@@ -107,10 +106,10 @@ handleDelete = (event) => {
 
     newDisplayedLines[0] = newDisplayedLines[0].slice(0, firstCut).concat(newDisplayedLines[0].slice(secondCut))
     let newEdgeRight = this.state.edgeRight + firstCut - secondCut;
-    let newEdgeLeft = newEdgeRight - constants.CHARS_ON_SCREEN;
+    let newEdgeLeft = newEdgeRight - CHARS_ON_SCREEN;
     if (newEdgeLeft < 0) {
-      if (this.state.displayedLines[0].length >= constants.CHARS_ON_SCREEN) {
-        newEdgeRight = constants.CHARS_ON_SCREEN;
+      if (this.state.displayedLines[0].length >= CHARS_ON_SCREEN) {
+        newEdgeRight = CHARS_ON_SCREEN;
       }
       newEdgeLeft = 0;
     }
@@ -129,24 +128,18 @@ handleDelete = (event) => {
     const { cursorPos, displayedLines } = this.state;
 
     if (direction === 'right') {
-      // Skip moving if cursor is as far right as it can go
       if (cursorPos === displayedLines[this.state.currentLine].length)
-        return console.log('skipping moving right, edge right - ' + this.state.edgeRight + ' edge left - ' + this.state.edgeLeft);
-
-      // Move an extra spot if it is moving through 'ln'
+        return;
       if (displayedLines[this.state.currentLine][cursorPos] === 'l') {
-        // Move the screen right once if the full 'ln' isn't on screen
         if (cursorPos === this.state.edgeRight - 1 || cursorPos === this.state.edgeRight) {
           this.setState(currentState => {
             return {edgeRight : currentState.edgeRight + 1, edgeLeft : currentState.edgeLeft + 1}})
         }
-        // Always move the cursor an extra position because of the ln
         this.setState(currentState => {
           return { cursorPos : currentState.cursorPos + 1 };
         })
       }
 
-      // Move the whole screen one step right if it is on the right edge
       if (cursorPos === this.state.edgeRight)
         this.setState(currentState => {
           currentState.edgeRight = currentState.edgeRight + 1;
@@ -154,31 +147,24 @@ handleDelete = (event) => {
           return currentState;
         })
 
-      // Always move the cursor forward one
       this.setState(currentState => {
         return { cursorPos : currentState.cursorPos + 1 };
       });
     }
 
     if (direction === 'left') {
-      // Skip moving if cursor is as far left as it can go
       if (cursorPos === 0)
-        return console.log('skipping moving left, edge right - ' + this.state.edgeRight + ' edge left - ' + this.state.edgeLeft);
-
-      // Move an extra spot if it is moving through 'ln'
+        return
       if (displayedLines[this.state.currentLine][cursorPos-1] === 'n') {
-        // Move the screen left once if the full 'ln' isn't on screen
         if (cursorPos === this.state.edgeLeft + 1 || cursorPos === this.state.edgeLeft) {
           this.setState(currentState => {
             return {edgeRight : currentState.edgeRight - 1, edgeLeft : currentState.edgeLeft - 1}})
         }
-        // Always move the cursor an extra position because of the ln
         this.setState(currentState => {
           return { cursorPos : currentState.cursorPos - 1 };
         })
       }
 
-      // Move the whole screen one step left if it is on the extendable left edge
       if (cursorPos === this.state.edgeLeft)
         this.setState(currentState => {
           currentState.edgeRight = currentState.edgeRight - 1;
@@ -186,13 +172,10 @@ handleDelete = (event) => {
           return currentState;
         })
 
-      // Always move the cursor backward one
       this.setState(currentState => {
         return { cursorPos : currentState.cursorPos - 1 };
       });
     }
-
-    else { console.log('unknown direction given to move cursor: ' + direction); }
   };
 
   moveLines = (direction) => {
@@ -260,7 +243,7 @@ handleDelete = (event) => {
                                           .concat(currentState.displayedLines[0].slice(currentState.cursorPos));
 
       currentState.edgeRight += currentState.displayedLines[currentState.currentLine].length;
-      currentState.edgeLeft = currentState.edgeRight - constants.CHARS_ON_SCREEN;
+      currentState.edgeLeft = currentState.edgeRight - CHARS_ON_SCREEN;
       if (currentState.edgeLeft < 0) currentState.edgeLeft = 0;
 
       currentState.buttons[4][3] = '=';
@@ -300,9 +283,9 @@ handleDelete = (event) => {
         currentState.edgeRight += 3;
         currentState.cursorPos += 2;
         // Correct edgeRight and edgeLeft if ln is being added 3 characters or less from the left side of the screen
-        if (currentState.edgeRight > constants.CHARS_ON_SCREEN + 1 && currentState.cursorPos <= currentState.edgeLeft + 5) {
-          currentState.edgeRight += -3 + currentState.cursorPos + constants.CHARS_ON_SCREEN - currentState.edgeRight;
-          currentState.edgeLeft = currentState.edgeRight - constants.CHARS_ON_SCREEN;
+        if (currentState.edgeRight > CHARS_ON_SCREEN + 1 && currentState.cursorPos <= currentState.edgeLeft + 5) {
+          currentState.edgeRight += -3 + currentState.cursorPos + CHARS_ON_SCREEN - currentState.edgeRight;
+          currentState.edgeLeft = currentState.edgeRight - CHARS_ON_SCREEN;
         }
         return currentState;
       });
@@ -314,9 +297,9 @@ handleDelete = (event) => {
         currentState.edgeRight += 2;
         currentState.cursorPos += 1;
         // Correct edgeRight and edgeLeft if sqrt is being added 2 characters or less from the left side of the screen
-        if (currentState.edgeRight > constants.CHARS_ON_SCREEN - 3 && currentState.cursorPos <= currentState.edgeLeft + 4) {
-          currentState.edgeRight -= 5 - (currentState.cursorPos - currentState.edgeLeft) - constants.CHARS_ON_SCREEN + (currentState.edgeRight - 3 - currentState.edgeLeft);
-          currentState.edgeLeft = currentState.edgeRight - constants.CHARS_ON_SCREEN;
+        if (currentState.edgeRight > CHARS_ON_SCREEN - 3 && currentState.cursorPos <= currentState.edgeLeft + 4) {
+          currentState.edgeRight -= 5 - (currentState.cursorPos - currentState.edgeLeft) - CHARS_ON_SCREEN + (currentState.edgeRight - 3 - currentState.edgeLeft);
+          currentState.edgeLeft = currentState.edgeRight - CHARS_ON_SCREEN;
         }
         return currentState;
       });
@@ -348,7 +331,7 @@ handleDelete = (event) => {
       .slice(0, cursorPos)
       .concat(symbol)
       .concat(currentState.displayedLines[0].slice(cursorPos));
-      if (currentState.cursorPos === currentState.edgeLeft && currentState.displayedLines[0].length > constants.CHARS_ON_SCREEN) {
+      if (currentState.cursorPos === currentState.edgeLeft && currentState.displayedLines[0].length > CHARS_ON_SCREEN) {
         currentState.edgeLeft -= 1;
         currentState.edgeRight -= 1;
       }
@@ -358,8 +341,6 @@ handleDelete = (event) => {
         edgeRight : currentState.edgeRight
       };
     })
-
-    console.log('After adding symbol, edgeRight:', this.state.edgeRight, 'edgeLeft:', this.state.edgeLeft);
   };
 
 // ------- level three ---------
@@ -373,8 +354,8 @@ handleDelete = (event) => {
     this.setState( currentState => {
       currentState.cursorPos++;
       currentState.edgeRight++;
-      if (currentState.edgeRight >= constants.CHARS_ON_SCREEN) {
-        currentState.edgeLeft = currentState.edgeRight - constants.CHARS_ON_SCREEN;
+      if (currentState.edgeRight >= CHARS_ON_SCREEN) {
+        currentState.edgeLeft = currentState.edgeRight - CHARS_ON_SCREEN;
       }
       return currentState;
     });
@@ -386,6 +367,32 @@ handleDelete = (event) => {
     this.clicked(theButton.state.symbol);
   }
 
+  clickScreen = (event) => {
+    if (this.state.currentLine !== 0 ) return;
+
+    const x = event.pageX;
+    const y = event.pageY;
+    console.log(x, y);
+    let clickPx;
+
+    if (y >= 125 && y <= 175 && x >= 56 && x <= 437) {
+      console.log('Braden 1');
+      for (let cursorSpot = 56; ; cursorSpot += CHAR_SIZE) {
+        if (x >= cursorSpot && x < cursorSpot + CHAR_SIZE) {
+          clickPx = x >= cursorSpot + CHAR_SIZE/2 ? cursorSpot + CHAR_SIZE : cursorSpot; break;
+        }
+      }
+      const newCursorPos = Math.round((clickPx - 56) / CHAR_SIZE);
+      console.log('Braden 2', clickPx, newCursorPos);
+      while (true) {
+        if (newCursorPos < this.state.cursorPos) this.moveCursor('left');
+        else if (newCursorPos > this.state.cursorPos) this.moveCursor('right');
+        else break;
+      }
+      console.log('Braden 3');
+    }
+  }
+
   render() {
     console.log('-------------------');
     console.log('displayedLines during render: ', this.state.displayedLines);
@@ -393,7 +400,13 @@ handleDelete = (event) => {
     console.log('CursorPos:', this.state.cursorPos);
 
     return (
-      <div id='calculator-body' className='calc-body' onKeyPress={this.handleKeyPress} onKeyDown = {this.handleDelete}>
+      <div
+        id='calculator-body'
+        className='calc-body'
+        onKeyPress = {this.handleKeyPress}
+        onKeyDown = {this.handleDelete}
+        onClick = {this.clickScreen}
+      >
         <br />
         <CalcScreen
           lines = {this.state.displayedLines}
