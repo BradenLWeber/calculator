@@ -125,13 +125,13 @@ handleDelete = (event) => {
   };
 
   moveCursor = (direction) => {
-    const { cursorPos, displayedLines } = this.state;
+    const { cursorPos, displayedLines, edgeRight, edgeLeft, currentLine } = this.state;
 
     if (direction === 'right') {
-      if (cursorPos === displayedLines[this.state.currentLine].length)
+      if (cursorPos === displayedLines[currentLine].length)
         return;
-      if (displayedLines[this.state.currentLine][cursorPos] === 'l') {
-        if (cursorPos === this.state.edgeRight - 1 || cursorPos === this.state.edgeRight) {
+      if (displayedLines[currentLine][cursorPos] === 'l') {
+        if (cursorPos === edgeRight - 1 || cursorPos === edgeRight) {
           this.setState(currentState => {
             return {edgeRight : currentState.edgeRight + 1, edgeLeft : currentState.edgeLeft + 1}})
         }
@@ -140,7 +140,7 @@ handleDelete = (event) => {
         })
       }
 
-      if (cursorPos === this.state.edgeRight)
+      if (cursorPos === edgeRight)
         this.setState(currentState => {
           currentState.edgeRight = currentState.edgeRight + 1;
           currentState.edgeLeft = currentState.edgeLeft + 1;
@@ -155,8 +155,8 @@ handleDelete = (event) => {
     if (direction === 'left') {
       if (cursorPos === 0)
         return
-      if (displayedLines[this.state.currentLine][cursorPos-1] === 'n') {
-        if (cursorPos === this.state.edgeLeft + 1 || cursorPos === this.state.edgeLeft) {
+      if (displayedLines[currentLine][cursorPos-1] === 'n') {
+        if (cursorPos === edgeLeft + 1 || cursorPos === edgeLeft) {
           this.setState(currentState => {
             return {edgeRight : currentState.edgeRight - 1, edgeLeft : currentState.edgeLeft - 1}})
         }
@@ -165,7 +165,7 @@ handleDelete = (event) => {
         })
       }
 
-      if (cursorPos === this.state.edgeLeft)
+      if (cursorPos === edgeLeft)
         this.setState(currentState => {
           currentState.edgeRight = currentState.edgeRight - 1;
           currentState.edgeLeft = currentState.edgeLeft - 1;
@@ -179,8 +179,10 @@ handleDelete = (event) => {
   };
 
   moveLines = (direction) => {
+    const { currentLine } = this.state;
+
     if (direction === 'up') {
-      if (this.state.currentLine < this.state.displayedLines.length-1) {
+      if (currentLine < this.state.displayedLines.length-1) {
         this.setState(currentState => {
           // If currentLine pushes off the screen, move the screen up
           if (currentState.edgeTop === currentState.currentLine + 1
@@ -201,7 +203,7 @@ handleDelete = (event) => {
     }
 
     else if (direction === 'down') {
-      if (this.state.currentLine > 0) {
+      if (currentLine > 0) {
         this.setState(currentState => {
           // If currentLine pushes off the screen, move the screen down
           if (currentState.edgeBottom === currentState.currentLine && currentState.edgeBottom !== 0) {
@@ -219,12 +221,12 @@ handleDelete = (event) => {
       }
     }
 
-    if (this.state.currentLine !== 0 && this.state.buttons[4][3] === '=') {
+    if (currentLine !== 0 && this.state.buttons[4][3] === '=') {
       this.setState(currentState => {
         currentState.buttons[4][3] = 'copy';
         return { buttons : currentState.buttons };
       });
-    } else if (this.state.currentLine === 0 && this.state.buttons[4][3] === 'copy') {
+    } else if (currentLine === 0 && this.state.buttons[4][3] === 'copy') {
       this.setState(currentState => {
         currentState.buttons[4][3] = '=';
         return { buttons : currentState.buttons };
@@ -368,28 +370,32 @@ handleDelete = (event) => {
   }
 
   clickScreen = (event) => {
+    const { cursorPos, edgeRight, edgeLeft } = this.state;
+
     if (this.state.currentLine !== 0 ) return;
 
     const x = event.pageX;
     const y = event.pageY;
-    console.log(x, y);
+    const boundaryLowX = 56 + (CHARS_ON_SCREEN - (edgeRight - edgeLeft)) * CHAR_SIZE;
+    const boundaryHighX = 56 + CHARS_ON_SCREEN * CHAR_SIZE;
+    const boundaryLowY = 125;
+    const boundaryHighY = 175;
     let clickPx;
 
-    if (y >= 125 && y <= 175 && x >= 56 && x <= 437) {
-      console.log('Braden 1');
-      for (let cursorSpot = 56; ; cursorSpot += CHAR_SIZE) {
+    if (y >= boundaryLowY && y <= boundaryHighY && x >= boundaryLowX && x <= boundaryHighX) {
+      for (let cursorSpot = boundaryLowX; ; cursorSpot += CHAR_SIZE) {
         if (x >= cursorSpot && x < cursorSpot + CHAR_SIZE) {
-          clickPx = x >= cursorSpot + CHAR_SIZE/2 ? cursorSpot + CHAR_SIZE : cursorSpot; break;
+          clickPx = x >= cursorSpot + CHAR_SIZE/2 ? cursorSpot + CHAR_SIZE : cursorSpot;
+          break;
         }
       }
-      const newCursorPos = Math.round((clickPx - 56) / CHAR_SIZE);
-      console.log('Braden 2', clickPx, newCursorPos);
-      while (true) {
-        if (newCursorPos < this.state.cursorPos) this.moveCursor('left');
-        else if (newCursorPos > this.state.cursorPos) this.moveCursor('right');
+      const newCursorPos = Math.round((clickPx - boundaryLowX) / CHAR_SIZE) + edgeLeft;
+
+      for (let x = 0; x < Math.abs(newCursorPos - cursorPos); x++) {
+        if (newCursorPos < cursorPos) this.moveCursor('left');
+        else if (newCursorPos > cursorPos) this.moveCursor('right');
         else break;
       }
-      console.log('Braden 3');
     }
   }
 
