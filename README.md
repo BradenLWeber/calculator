@@ -4,8 +4,9 @@ I am not breaking any new ground here, but the practical application of the thin
 
 Things next:
 - Bug hunt!
-- - Sometimes when ln and sqrt are deleted from the very left of the screen, the line doesn't correct itself
+- - Edge left/right are formatted wrong when ln is deleted on left side of screen and line.length < CHARS_ON_SCREEN
 - Visual design improvements
 - Rewriting inefficient code
-- Run Prettier?
 - Add buttons to let user decide height and width?
+- - Refractor so that ROWS_ON_SCREEN is a constants
+- Reset PX amounts to be relative to calculator borders?
