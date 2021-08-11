@@ -8,10 +8,10 @@ const CalcScreen = (props) => {
   function displayLine(rowNum) {
     const line = lines[getLineNumber(rowNum)];
     if (lines.length > rowNum) {
-        if (line.length < CHARS_ON_SCREEN) return line;
-        return line.slice(line.length - CHARS_ON_SCREEN);
+      if (line.length < CHARS_ON_SCREEN) return line;
+      return line.slice(line.length - CHARS_ON_SCREEN);
     } else {
-        return ''
+      return '';
     }
   }
 
@@ -19,24 +19,33 @@ const CalcScreen = (props) => {
     const pos = 66.5 + 16.5 * (22 - edgeRight + cursorPos);
     const animate = currentLine === 0 ? 'blinker 1s step-start infinite' : 'none';
     return {
-      left : pos + 'px',
-      animation : animate
+      left: pos + 'px',
+      animation: animate,
     };
   }
 
   function getLineNumber(line) {
-      return edgeBottom + line;
+    return edgeBottom + line;
   }
 
   function haveRightArrow(line) {
-      if (currentLine === getLineNumber(line)) return '\u00AB'
+    if (currentLine === getLineNumber(line)) return '\u00AB';
   }
 
   function haveLeftArrow(line) {
     if (line === 0) {
-      if (currentLine === 0 && lines[0].length > CHARS_ON_SCREEN && edgeLeft !== 0) return '<';
+      if (
+        currentLine === 0 &&
+        lines[0].length > CHARS_ON_SCREEN &&
+        edgeLeft !== 0
+      )
+        return '<';
     } else {
-      if (lines.length >= line+1 && lines[edgeBottom+line].length > CHARS_ON_SCREEN) return '<';
+      if (
+        lines.length >= line + 1 &&
+        lines[edgeBottom + line].length > CHARS_ON_SCREEN
+      )
+        return '<';
     }
   }
 
@@ -50,28 +59,38 @@ const CalcScreen = (props) => {
         id='calc-screen-arrow-column-left'
         className='calc-arrow-column-left'
       >
-        {haveLeftArrow(3)}<br />
-        {haveLeftArrow(2)}<br />
-        {haveLeftArrow(1)}<br />
+        {haveLeftArrow(3)}
+        <br />
+        {haveLeftArrow(2)}
+        <br />
+        {haveLeftArrow(1)}
+        <br />
         {haveLeftArrow(0)}
       </div>
       <div id='calc-screen-number-column' className='calc-number-column'>
-        {displayLine(3)}<br />
-        {displayLine(2)}<br />
-        {displayLine(1)}<br />
+        {displayLine(3)}
+        <br />
+        {displayLine(2)}
+        <br />
+        {displayLine(1)}
+        <br />
         {currentLine === 0
           ? lines[0].slice(edgeLeft, edgeRight)
-          : displayLine(0)
-        }
+          : displayLine(0)}
       </div>
       <div
         id='calc-screen-arrow-column-right'
         className='calc-arrow-column-right'
       >
-        {haveRightArrow(3)}<div style={ {height : '34px' } }/>
-        {haveRightArrow(2)}<div style={ {height : '34px' } }/>
-        {haveRightArrow(1)}<div style={ {height : '34px' } }/>
-        {currentLine === 0 ? edgeRight < lines[currentLine].length && '>' : haveRightArrow(0)}
+        {haveRightArrow(3)}
+        <div style={{ height: '34px' }} />
+        {haveRightArrow(2)}
+        <div style={{ height: '34px' }} />
+        {haveRightArrow(1)}
+        <div style={{ height: '34px' }} />
+        {currentLine === 0
+          ? edgeRight < lines[currentLine].length && '>'
+          : haveRightArrow(0)}
       </div>
       <div
         id='calc-screen-cursor-display'
