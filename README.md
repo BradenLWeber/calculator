@@ -8,5 +8,5 @@ Things next:
 - Visual design improvements
 - Rewriting inefficient code
 - Add buttons to let user decide height and width?
-- - Refractor so that ROWS_ON_SCREEN is a constants
+- - Refractor so that ROWS_ON_SCREEN is a constant
 - Reset PX amounts to be relative to calculator borders?
