@@ -4,7 +4,6 @@ I am not breaking any new ground here, but the practical application of the thin
 
 Things next:
 - Bug hunt!
-- - Should limit the amount that can be put into a line
 - Visual design improvements
 - Rewriting inefficient code
 - Add buttons to let user decide height and width?

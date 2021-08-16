@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import CalcButtons from './calcButtons';
 import CalcScreen from './calcScreen';
 import '../styles/calcDisplay.css';
-import { CHARS_ON_SCREEN, CHAR_SIZE } from '../constants/constants';
+import { CHARS_ON_SCREEN, CHAR_SIZE, MAX_LINE_LENGTH } from '../constants/constants';
 import { evaluate } from 'mathjs';
 
 class Calculator extends Component {
@@ -261,11 +261,17 @@ class Calculator extends Component {
   };
 
   copyButton = () => {
+    const { displayedLines, currentLine } = this.state;
     if (
-      this.state.displayedLines[this.state.currentLine] === 'Error' ||
-      this.state.displayedLines[this.state.currentLine] === 'Infinity'
+      displayedLines[currentLine] === 'Error' ||
+      displayedLines[currentLine] === 'Infinity'
     )
       return;
+
+    if (displayedLines[currentLine].length + displayedLines[0].length > MAX_LINE_LENGTH) {
+      alert('Copying this line creates too long of a line');
+      return;
+    }
 
     this.setState((currentState) => {
       currentState.displayedLines[0] = currentState.displayedLines[0]
@@ -309,37 +315,46 @@ class Calculator extends Component {
     if (symbol === 'x!') {
       return '!';
     }
+
     if (symbol === 'ln') {
-      this.setState((currentState) => {
-        currentState.edgeRight += 3;
-        currentState.cursorPos += 2;
-        // Correct edgeRight and edgeLeft if ln is being added 3 characters or less from the left side of the screen
-        if (
-          currentState.edgeRight > CHARS_ON_SCREEN - 1 &&
-          currentState.cursorPos <= currentState.edgeLeft + 5
-        ) {
-          currentState.edgeRight += -3 + currentState.cursorPos + CHARS_ON_SCREEN - currentState.edgeRight;
-          currentState.edgeLeft = currentState.edgeRight - CHARS_ON_SCREEN;
-        }
-        return currentState;
-      });
+      if (4 + this.state.displayedLines[0].length <= MAX_LINE_LENGTH) {
+        this.setState((currentState) => {
+          currentState.edgeRight += 3;
+          currentState.cursorPos += 2;
+          // Correct edgeRight and edgeLeft if ln is being added 3 characters or less from the left side of the screen
+          if (
+            currentState.edgeRight > CHARS_ON_SCREEN - 1 &&
+            currentState.cursorPos <= currentState.edgeLeft + 5
+          ) {
+            currentState.edgeRight += -3 + currentState.cursorPos + CHARS_ON_SCREEN - currentState.edgeRight;
+            currentState.edgeLeft = currentState.edgeRight - CHARS_ON_SCREEN;
+          }
+          return currentState;
+        });
+      }
       return 'ln()';
     }
-    if (symbol === 'x\u207F') return '^';
+
+    if (symbol === 'x\u207F') {
+      return '^';
+    }
+
     if (symbol === '\u221A') {
-      this.setState((currentState) => {
-        currentState.edgeRight += 2;
-        currentState.cursorPos += 1;
-        // Correct edgeRight and edgeLeft if sqrt is being added 2 characters or less from the left side of the screen
-        if (
-          currentState.edgeRight > CHARS_ON_SCREEN - 1 &&
-          currentState.cursorPos <= currentState.edgeLeft + 4
-        ) {
-          currentState.edgeRight += -2 + currentState.cursorPos + CHARS_ON_SCREEN - currentState.edgeRight;
-          currentState.edgeLeft = currentState.edgeRight - CHARS_ON_SCREEN;
-        }
-        return currentState;
-      });
+      if (3 + this.state.displayedLines[0].length <= MAX_LINE_LENGTH) {
+        this.setState((currentState) => {
+          currentState.edgeRight += 2;
+          currentState.cursorPos += 1;
+          // Correct edgeRight and edgeLeft if sqrt is being added 2 characters or less from the left side of the screen
+          if (
+            currentState.edgeRight > CHARS_ON_SCREEN - 1 &&
+            currentState.cursorPos <= currentState.edgeLeft + 4
+          ) {
+            currentState.edgeRight += -2 + currentState.cursorPos + CHARS_ON_SCREEN - currentState.edgeRight;
+            currentState.edgeLeft = currentState.edgeRight - CHARS_ON_SCREEN;
+          }
+          return currentState;
+        });
+      }
       return '\u221A()';
     }
   };
@@ -373,6 +388,8 @@ class Calculator extends Component {
       symbol = this.specialChar(symbol);
     }
 
+    if (symbol.length + this.state.displayedLines[0].length > MAX_LINE_LENGTH) return 'specialButton';
+
     this.setState((currentState) => {
       currentState.displayedLines[0] = currentState.displayedLines[0]
         .slice(0, cursorPos)
@@ -400,7 +417,6 @@ class Calculator extends Component {
 
     if (this.addSymbol(symbol, cursorPos) === 'specialButton') return;
 
-    // Passing in a function eliminates race conditions
     this.setState((currentState) => {
       currentState.cursorPos++;
       currentState.edgeRight++;
