@@ -3,6 +3,7 @@
   height: 140px;
   margin-left: 23px;
   margin-top: 5px;
+  font-family: 'Consolas';
 }
 
 .calc-body {
@@ -19,7 +20,7 @@
   height: 140px;
   text-align: right;
   padding-right: 5px;
-  padding-bottom: 5px;
+  padding-top: 2px;
   display: inline-block;
   border-style: none ridge none ridge;
   border-width: 3px;
@@ -50,7 +51,6 @@
 }
 
 .calc-cursor {
-  top: 134px;
   left: 218px;
   position: absolute;
   animation: blinker 1s step-start infinite;

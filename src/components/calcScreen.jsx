@@ -16,11 +16,13 @@ const CalcScreen = (props) => {
   }
 
   function putCursor() {
-    const pos = 66.5 + 16.5 * (22 - edgeRight + cursorPos);
+    const leftPos = 66.5 + 16.5 * (22 - edgeRight + cursorPos);
     const animate = currentLine === 0 ? 'blinker 1s step-start infinite' : 'none';
+    const topPos = 32.5 + 34.5 * (props.rowsOnScreen - 1);
     return {
-      left: pos + 'px',
+      left: leftPos + 'px',
       animation: animate,
+      top: topPos + 'px',
     };
   }
 
@@ -49,15 +51,22 @@ const CalcScreen = (props) => {
     }
   }
 
+  function getHeight(numberColumn = false) {
+    return {
+      height: props.rowsOnScreen * 35 + 3 + (-2 * numberColumn) + 'px'
+    }
+  }
+
   return (
     <div
       id='calc-screen'
       className='calc-screen'
-      style={{ fontFamily: 'Consolas' }}
+      style={getHeight()}
     >
       <div
         id='calc-screen-arrow-column-left'
         className='calc-arrow-column-left'
+        style = {getHeight()}
       >
         {haveLeftArrow(3)}
         <br />
@@ -67,7 +76,11 @@ const CalcScreen = (props) => {
         <br />
         {haveLeftArrow(0)}
       </div>
-      <div id='calc-screen-number-column' className='calc-number-column'>
+      <div
+        id='calc-screen-number-column'
+        className='calc-number-column'
+        style={getHeight(true)}
+      >
         {displayLine(3)}
         <br />
         {displayLine(2)}
@@ -81,6 +94,7 @@ const CalcScreen = (props) => {
       <div
         id='calc-screen-arrow-column-right'
         className='calc-arrow-column-right'
+        style={getHeight()}
       >
         {haveRightArrow(3)}
         <div style={{ height: '34px' }} />

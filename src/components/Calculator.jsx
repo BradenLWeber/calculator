@@ -13,6 +13,7 @@ class Calculator extends Component {
     edgeTop: 0,
     edgeBottom: 0,
     currentLine: 0,
+    rowsOnScreen: 4,
     displayedLines: [''],
     buttons: [
       // delete
@@ -210,7 +211,7 @@ class Calculator extends Component {
           if (
             currentState.edgeTop === currentState.currentLine + 1 &&
             currentState.edgeTop !== currentState.displayedLines.length &&
-            currentState.displayedLines.length > 3
+            currentState.displayedLines.length > this.state.rowsOnScreen - 1
           ) {
             currentState.edgeTop = currentState.edgeTop + 1;
             currentState.edgeBottom = currentState.edgeBottom + 1;
@@ -471,6 +472,12 @@ class Calculator extends Component {
     }
   };
 
+  getHeight = () => {
+    return {
+      height: (this.state.rowsOnScreen * 35 + 3) + 300 + 'px'
+    }
+  }
+
   render() {
     console.log('-------------------');
     console.log('displayedLines during render:', this.state.displayedLines);
@@ -481,6 +488,7 @@ class Calculator extends Component {
       <div
         id='calculator-body'
         className='calc-body'
+        style = {this.getHeight()}
         onKeyPress={this.handleKeyPress}
         onKeyDown={this.handleKeyPressOther}
         onClick={this.clickScreen}
@@ -493,6 +501,7 @@ class Calculator extends Component {
           edgeBottom={this.state.edgeBottom}
           cursorPos={this.state.cursorPos}
           currentLine={this.state.currentLine}
+          rowsOnScreen={this.state.rowsOnScreen}
         />
         <div style={{ height: '27px' }} />
         <CalcButtons
