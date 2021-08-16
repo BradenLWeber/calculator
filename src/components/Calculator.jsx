@@ -65,7 +65,7 @@ class Calculator extends Component {
     }
   };
 
-  handleDelete = (event) => {
+  handleKeyPressOther = (event) => {
     if (event.keyCode === 8) this.clicked('\u232B');
     else if (event.keyCode === 37) this.clicked('\u2190');
     else if (event.keyCode === 38) this.clicked('\u2191');
@@ -118,11 +118,14 @@ class Calculator extends Component {
     newDisplayedLines[0] = newDisplayedLines[0]
       .slice(0, firstCut)
       .concat(newDisplayedLines[0].slice(secondCut));
+
     let newEdgeRight = this.state.edgeRight + firstCut - secondCut;
     let newEdgeLeft = newEdgeRight - CHARS_ON_SCREEN;
     if (newEdgeLeft < 0) {
-      if (this.state.displayedLines[0].length >= CHARS_ON_SCREEN) {
+      if (newDisplayedLines[0].length >= CHARS_ON_SCREEN) {
         newEdgeRight = CHARS_ON_SCREEN;
+      } else {
+        newEdgeRight = newDisplayedLines[0].length;
       }
       newEdgeLeft = 0;
     }
@@ -463,7 +466,7 @@ class Calculator extends Component {
         id='calculator-body'
         className='calc-body'
         onKeyPress={this.handleKeyPress}
-        onKeyDown={this.handleDelete}
+        onKeyDown={this.handleKeyPressOther}
         onClick={this.clickScreen}
       >
         <br />
