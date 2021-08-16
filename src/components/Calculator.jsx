@@ -29,8 +29,6 @@ class Calculator extends Component {
     ],
   };
 
-  // ----- level zero --------
-
   evaluateUserExpression = () => {
     let userLine = this.state.displayedLines[0];
     userLine = userLine.replace(/ln/g, 'log');
@@ -73,8 +71,6 @@ class Calculator extends Component {
     else if (event.keyCode === 39) this.clicked('\u2192');
     else if (event.keyCode === 40) this.clicked('\u2193');
   };
-
-  // ----- level one --------
 
   equalsButton = () => {
     const evaluatedLine = this.evaluateUserExpression();
@@ -298,8 +294,6 @@ class Calculator extends Component {
     });
   };
 
-  // ------- level two --------
-
   specialButton = (symbol) => {
     if (symbol === '\u2191') this.moveLines('up');
     else if (symbol === '\u2193') this.moveLines('down');
@@ -360,8 +354,6 @@ class Calculator extends Component {
     }
   };
 
-  // ------- level three ---------
-
   addSymbol = (symbol, cursorPos) => {
     if (
       symbol === '=' ||
@@ -389,7 +381,10 @@ class Calculator extends Component {
       symbol = this.specialChar(symbol);
     }
 
-    if (symbol.length + this.state.displayedLines[0].length > MAX_LINE_LENGTH) return 'specialButton';
+    if (symbol.length + this.state.displayedLines[0].length > MAX_LINE_LENGTH) {
+      alert('200 character Max');
+      return 'specialButton';
+    }
 
     this.setState((currentState) => {
       currentState.displayedLines[0] = currentState.displayedLines[0]
@@ -411,8 +406,6 @@ class Calculator extends Component {
     });
   };
 
-  // ------- level three ---------
-
   clicked = (symbol) => {
     const { cursorPos } = this.state;
 
@@ -427,8 +420,6 @@ class Calculator extends Component {
       return currentState;
     });
   };
-
-  // ------ level four ------
 
   onClick = (theButton) => {
     this.clicked(theButton.state.symbol);
