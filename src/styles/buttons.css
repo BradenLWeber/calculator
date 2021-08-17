@@ -172,3 +172,29 @@
   background-color: #adadad;
   border-radius: 10px;
 }
+
+.add-row-button {
+  background-color: rgb(151, 185, 216);
+  color: blue;
+  width: 240px;
+  height: 10px;
+  position: relative;
+  margin: 0px;
+  left: 120px;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  font-size: 5px;
+}
+
+.delete-row-button {
+  background-color: rgb(151, 185, 216);
+  color: blue;
+  width: 240px;
+  height: 10px;
+  position: relative;
+  left: 120px;
+  margin: 0px;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  font-size: 5px;
+}

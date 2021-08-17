@@ -22,7 +22,7 @@ const CalcScreen = (props) => {
   function putCursor() {
     const leftPos = 66.5 + 16.5 * (22 - edgeRight + cursorPos);
     const animate = currentLine === 0 ? 'blinker 1s step-start infinite' : 'none';
-    const topPos = 32.5 + 34.5 * (props.rowsOnScreen - 1);
+    const topPos = 45.5 + 34.5 * (props.rowsOnScreen - 1);
     return {
       left: leftPos + 'px',
       animation: animate,
