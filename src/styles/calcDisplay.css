@@ -4,6 +4,7 @@
   margin-left: 23px;
   margin-top: 0px;
   font-family: 'Consolas';
+  transition: height, 0.1s;
 }
 
 .calc-body {
@@ -11,6 +12,7 @@
   width: 481px;
   height: 435px;
   border-radius: 10px;
+  transition: height, 0.1s;
 }
 
 .calc-number-column {
@@ -25,6 +27,7 @@
   border-style: none ridge none ridge;
   border-width: 3px;
   border-color: rgb(51, 45, 99);
+  transition: height, 0.1s;
 }
 
 .calc-arrow-column-left {
@@ -37,6 +40,7 @@
   vertical-align: top;
   text-align: end;
   font-family: "Consolas";
+  transition: height, 0.1s;
 }
 
 .calc-arrow-column-right {
@@ -48,6 +52,7 @@
   display: inline-block;
   vertical-align: top;
   font-family: "Consolas";
+  transition: height, 0.1s;
 }
 
 .calc-cursor {
@@ -56,6 +61,7 @@
   animation: blinker 1s step-start infinite;
   font-family: "Consolas";
   font-size: 30px;
+  transition: height, 0.1s;
 }
 
 @keyframes blinker {

@@ -56,6 +56,10 @@ class Calculator extends Component {
       this.clicked('\u221A');
     } else if (event.key.toLowerCase() === 'a') {
       this.clicked('AC');
+    } else if (event.key.toLowerCase() === 'u'){
+      this.editNumberOfRows('add');
+    } else if (event.key.toLowerCase() === 'd') {
+      this.editNumberOfRows('delete');
     } else if (
       event.key.toLowerCase() === 'c' &&
       this.state.buttons[4][3] === 'copy'
@@ -472,9 +476,29 @@ class Calculator extends Component {
 
   editNumberOfRows = (action) => {
     if (action === 'add' && this.state.rowsOnScreen < 10) {
-      this.setState({ rowsOnScreen : this.state.rowsOnScreen + 1});
-    } else if (action === 'delete' && this.state.rowsOnScreen > 1) {
-      this.setState({rowsOnScreen : this.state.rowsOnScreen - 1});
+      this.setState(currentState => {
+        if (currentState.edgeTop === currentState.rowsOnScreen && currentState.displayedLines.length > currentState.edgeTop) {
+          currentState.edgeTop++;
+        }
+        return {
+          rowsOnScreen: currentState.rowsOnScreen + 1,
+          edgeTop: currentState.edgeTop
+        }
+      });
+    } else if (action === 'delete' && this.state.rowsOnScreen > 2) {
+      this.setState(currentState => {
+        if (currentState.edgeTop - currentState.edgeBottom === currentState.rowsOnScreen) {
+          currentState.edgeTop--;
+          if (currentState.currentLine === currentState.rowsOnScreen - 1 + currentState.edgeBottom) {
+            currentState.currentLine--;
+          }
+        }
+        return {
+          edgeTop: currentState.edgeTop,
+          currentLine: currentState.currentLine,
+          rowsOnScreen: currentState.rowsOnScreen - 1,
+        }
+      });
     }
   }
 
@@ -496,7 +520,7 @@ class Calculator extends Component {
         onClick={this.clickScreen}
       >
         <br />
-        <button className='add-row-button' onClick={() => this.editNumberOfRows('add')} />
+        <button className='delete-row-button' onClick={() => this.editNumberOfRows('delete')} />
         <CalcScreen
           lines={this.state.displayedLines}
           edgeRight={this.state.edgeRight}
@@ -506,8 +530,8 @@ class Calculator extends Component {
           currentLine={this.state.currentLine}
           rowsOnScreen={this.state.rowsOnScreen}
         />
-        <div style={{ height: '2px' }} />
-        <button className='delete-row-button' onClick={() => this.editNumberOfRows('delete')} />
+        <div style={{ height: '8px' }} />
+        <button className='add-row-button' onClick={() => this.editNumberOfRows('add')} />
         <div style={{ height: '13px' }} />
         <CalcButtons
           buttons={this.state.buttons}

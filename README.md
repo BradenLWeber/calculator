@@ -4,8 +4,6 @@ I am not breaking any new ground here, but the practical application of the thin
 
 Things next:
 - Bug hunt!
-- Visual design improvements
-- Rewriting inefficient code
-- Add buttons to let user decide height and width?
-- - Have to account for edgeTop, edgeBottom, and currentLine
+- Add buttons to let user decide height and width
+- - Is there some way to make these buttons look nicer?
 - Reset PX amounts to be relative to calculator borders?
