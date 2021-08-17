@@ -13,7 +13,7 @@ class Calculator extends Component {
     edgeTop: 0,
     edgeBottom: 0,
     currentLine: 0,
-    rowsOnScreen: 4,
+    rowsOnScreen: 7,
     displayedLines: [''],
     buttons: [
       // delete
@@ -74,12 +74,13 @@ class Calculator extends Component {
 
   equalsButton = () => {
     const evaluatedLine = this.evaluateUserExpression();
+    const lines = this.state.edgeTop + 2
 
     this.setState({
       cursorPos: 0,
       edgeRight: 0,
       edgeLeft: 0,
-      edgeTop: this.state.edgeTop === 0 ? 2 : 4,
+      edgeTop: lines < this.state.rowsOnScreen ? lines : this.state.rowsOnScreen,
       displayedLines: ['', evaluatedLine].concat(this.state.displayedLines),
     });
   };
@@ -474,6 +475,7 @@ class Calculator extends Component {
     console.log('displayedLines during render:', this.state.displayedLines);
     console.log('Display index range:', this.state.edgeLeft, '-', this.state.edgeRight);
     console.log('CursorPos:', this.state.cursorPos);
+    console.log('Row index range:', this.state.edgeBottom, '-', this.state.edgeTop);
 
     return (
       <div

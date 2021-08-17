@@ -4,6 +4,7 @@ I am not breaking any new ground here, but the practical application of the thin
 
 Things next:
 - Bug hunt!
+- - If you click up to the top of the screen, it crashes
 - Visual design improvements
 - Rewriting inefficient code
 - Add buttons to let user decide height and width?

@@ -1,9 +1,13 @@
 import '../styles/calcDisplay.css';
 import * as constants from '../constants/constants.js';
+import react, { useEffect, useState } from 'react';
 
 const CalcScreen = (props) => {
   const { edgeRight, edgeLeft, edgeBottom, lines, cursorPos, currentLine } = props;
   const { CHARS_ON_SCREEN } = constants;
+
+  const [numberArray, setArray] = useState([...Array(props.rowsOnScreen).keys()].reverse());
+  useEffect(() => {setArray(array => [...Array(props.rowsOnScreen).keys()].slice(1).reverse())}, [props.rowsOnScreen]);
 
   function displayLine(rowNum) {
     const line = lines[getLineNumber(rowNum)];
@@ -35,19 +39,13 @@ const CalcScreen = (props) => {
   }
 
   function haveLeftArrow(line) {
-    if (line === 0) {
-      if (
-        currentLine === 0 &&
-        lines[0].length > CHARS_ON_SCREEN &&
-        edgeLeft !== 0
-      )
-        return '<';
-    } else {
-      if (
-        lines.length >= line + 1 &&
-        lines[edgeBottom + line].length > CHARS_ON_SCREEN
-      )
-        return '<';
+    if (line === 0 && currentLine === 0) {
+      return edgeLeft !== 0 ? '<' : '';
+    }
+    console.log(lines.length, '>=', line, '+ 1');
+    console.log(numberArray);
+    if (lines.length >= line + 1 && lines[edgeBottom + line].length > CHARS_ON_SCREEN) {
+      return '<';
     }
   }
 
@@ -68,44 +66,54 @@ const CalcScreen = (props) => {
         className='calc-arrow-column-left'
         style = {getHeight()}
       >
-        {haveLeftArrow(3)}
-        <br />
-        {haveLeftArrow(2)}
-        <br />
-        {haveLeftArrow(1)}
-        <br />
+        {numberArray.map(element => {
+          return (
+            <react.Fragment>
+              {haveLeftArrow(element)}
+              <br/>
+            </react.Fragment>
+          )
+        })}
         {haveLeftArrow(0)}
       </div>
+
       <div
         id='calc-screen-number-column'
         className='calc-number-column'
         style={getHeight(true)}
       >
-        {displayLine(3)}
-        <br />
-        {displayLine(2)}
-        <br />
-        {displayLine(1)}
-        <br />
+        {numberArray.map(element => {
+          return (
+            <react.Fragment>
+              {displayLine(element)}
+              <br />
+            </react.Fragment>
+          )
+        })}
         {currentLine === 0
           ? lines[0].slice(edgeLeft, edgeRight)
           : displayLine(0)}
       </div>
+
       <div
         id='calc-screen-arrow-column-right'
         className='calc-arrow-column-right'
         style={getHeight()}
       >
-        {haveRightArrow(3)}
-        <div style={{ height: '34px' }} />
-        {haveRightArrow(2)}
-        <div style={{ height: '34px' }} />
-        {haveRightArrow(1)}
-        <div style={{ height: '34px' }} />
+        {numberArray.map(element => {
+          return (
+            <react.Fragment>
+              {haveRightArrow(element)}
+              <div style={{ height: '34px' }} />
+            </react.Fragment>
+          )
+        })}
         {currentLine === 0
           ? edgeRight < lines[currentLine].length && '>'
-          : haveRightArrow(0)}
+          : haveRightArrow(0)
+        }
       </div>
+
       <div
         id='calc-screen-cursor-display'
         className='calc-cursor'
