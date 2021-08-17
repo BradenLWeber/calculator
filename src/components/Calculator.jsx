@@ -208,7 +208,7 @@ class Calculator extends Component {
           if (
             currentState.edgeTop === currentState.currentLine + 1 &&
             currentState.edgeTop !== currentState.displayedLines.length &&
-            currentState.displayedLines.length > this.state.rowsOnScreen - 1
+            currentState.displayedLines.length > this.state.rowsOnScreen
           ) {
             currentState.edgeTop = currentState.edgeTop + 1;
             currentState.edgeBottom = currentState.edgeBottom + 1;
@@ -476,6 +476,7 @@ class Calculator extends Component {
     console.log('Display index range:', this.state.edgeLeft, '-', this.state.edgeRight);
     console.log('CursorPos:', this.state.cursorPos);
     console.log('Row index range:', this.state.edgeBottom, '-', this.state.edgeTop);
+    console.log('Current line', this.state.currentLine);
 
     return (
       <div

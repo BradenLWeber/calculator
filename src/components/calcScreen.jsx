@@ -42,8 +42,6 @@ const CalcScreen = (props) => {
     if (line === 0 && currentLine === 0) {
       return edgeLeft !== 0 ? '<' : '';
     }
-    console.log(lines.length, '>=', line, '+ 1');
-    console.log(numberArray);
     if (lines.length >= line + 1 && lines[edgeBottom + line].length > CHARS_ON_SCREEN) {
       return '<';
     }
