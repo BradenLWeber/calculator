@@ -56,9 +56,9 @@ class Calculator extends Component {
       this.clicked('\u221A');
     } else if (event.key.toLowerCase() === 'a') {
       this.clicked('AC');
-    } else if (event.key.toLowerCase() === 'u'){
+    } else if (event.key.toLowerCase() === 'd'){
       this.editNumberOfRows('add');
-    } else if (event.key.toLowerCase() === 'd') {
+    } else if (event.key.toLowerCase() === 'u') {
       this.editNumberOfRows('delete');
     } else if (
       event.key.toLowerCase() === 'c' &&
@@ -439,8 +439,9 @@ class Calculator extends Component {
     const y = event.pageY;
     const boundaryLowX = 56 + (CHARS_ON_SCREEN - (edgeRight - edgeLeft)) * CHAR_SIZE;
     const boundaryHighX = 56 + CHARS_ON_SCREEN * CHAR_SIZE;
-    const boundaryLowY = 125;
-    const boundaryHighY = 175;
+    const boundaryLowY = 80 + (this.state.rowsOnScreen - 2) * 35;
+    const boundaryHighY = 115 + (this.state.rowsOnScreen - 2) * 35;
+    console.log(x, y);
     let clickPx;
 
     if (
