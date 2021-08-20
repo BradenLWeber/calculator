@@ -77,6 +77,8 @@ class Calculator extends Component {
   };
 
   equalsButton = () => {
+    if (this.state.displayedLines[0] === '') return;
+
     const evaluatedLine = this.evaluateUserExpression();
     const lines = this.state.edgeTop + 2
 
