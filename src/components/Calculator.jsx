@@ -441,7 +441,6 @@ class Calculator extends Component {
     const boundaryHighX = 56 + CHARS_ON_SCREEN * CHAR_SIZE;
     const boundaryLowY = 80 + (this.state.rowsOnScreen - 2) * 35;
     const boundaryHighY = 115 + (this.state.rowsOnScreen - 2) * 35;
-    console.log(x, y);
     let clickPx;
 
     if (
