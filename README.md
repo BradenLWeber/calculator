@@ -7,4 +7,6 @@ Things next:
 - - Scrolls up one away from the top in one case
 - Add buttons to let user decide height and width
 - - Is there some way to make these buttons look nicer?
-- Reset PX amounts to be relative to calculator borders?
+- Button up/down screen
+- - Make buttons into shape of up/down arrows?
+- - Have arrows both above the screen?
