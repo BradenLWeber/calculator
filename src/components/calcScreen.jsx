@@ -22,7 +22,7 @@ const CalcScreen = (props) => {
   function putCursor() {
     const leftPos = 66.5 + 16.5 * (22 - edgeRight + cursorPos);
     const animate = currentLine === 0 ? 'blinker 1s step-start infinite' : 'none';
-    const topPos = 45.5 + 34.5 * (props.rowsOnScreen - 1);
+    const topPos = 48 + 34.4 * (props.rowsOnScreen - 1);
     return {
       left: leftPos + 'px',
       animation: animate,
@@ -64,6 +64,7 @@ const CalcScreen = (props) => {
         className='calc-arrow-column-left'
         style = {getHeight()}
       >
+        <div style={{height: '0.5px'}} />
         {numberArray.map(element => {
           return (
             <react.Fragment>
@@ -102,7 +103,7 @@ const CalcScreen = (props) => {
           return (
             <react.Fragment>
               {haveRightArrow(element)}
-              <div style={{ height: '34px' }} />
+              <div style={{ height: '34.5px' }} />
             </react.Fragment>
           )
         })}

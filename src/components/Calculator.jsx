@@ -460,13 +460,10 @@ class Calculator extends Component {
           break;
         }
       }
-      const newCursorPos = Math.round((clickPx - boundaryLowX) / CHAR_SIZE) + edgeLeft;
 
-      for (let x = 0; x < Math.abs(newCursorPos - cursorPos); x++) {
-        if (newCursorPos < cursorPos) this.moveCursor('left');
-        else if (newCursorPos > cursorPos) this.moveCursor('right');
-        else break;
-      }
+      let newCursorPos = Math.round((clickPx - boundaryLowX) / CHAR_SIZE) + edgeLeft;
+      if (this.state.displayedLines[0][newCursorPos] === 'n') newCursorPos--;
+      this.setState({cursorPos: newCursorPos});
     }
   };
 
