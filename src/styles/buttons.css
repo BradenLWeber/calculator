@@ -180,6 +180,7 @@
   height: 12px;
   position: relative;
   margin: 0px;
+  margin-bottom: 4px;
   left: 190px;
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
@@ -197,4 +198,51 @@
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
   font-size: 5px;
+}
+
+.chevron {
+  position: relative;
+  text-align: center;
+  padding: 12px;
+  margin-bottom: 6px;
+  height: 8px;
+  width: 50px;
+  background: rgb(51, 45, 99);
+  border: none;
+  box-shadow: none;
+  left: 190px;
+}
+.chevron:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 51%;
+  background: rgb(151, 185, 216);
+  transform: skew(0deg, 15deg);
+}
+.chevron:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 50%;
+  background: rgb(151, 185, 216);
+  transform: skew(0deg, -15deg);
+}
+
+.chevron2::before {
+	border-style: solid;
+	border-width: 0.25em 0.25em 0 0;
+	content: '';
+	display: inline-block;
+	height: 0.45em;
+	left: 0.15em;
+	position: relative;
+	top: 0.15em;
+	transform: rotate(-45deg);
+	vertical-align: top;
+	width: 0.45em;
 }

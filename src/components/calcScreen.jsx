@@ -11,6 +11,7 @@ const CalcScreen = (props) => {
 
   function displayLine(rowNum) {
     const line = lines[getLineNumber(rowNum)];
+    if (line === undefined) return;
     if (lines.length > rowNum) {
       if (line.length < CHARS_ON_SCREEN) return line;
       return line.slice(line.length - CHARS_ON_SCREEN);
@@ -22,7 +23,7 @@ const CalcScreen = (props) => {
   function putCursor() {
     const leftPos = 66.5 + 16.5 * (22 - edgeRight + cursorPos);
     const animate = currentLine === 0 ? 'blinker 1s step-start infinite' : 'none';
-    const topPos = 48 + 34.4 * (props.rowsOnScreen - 1);
+    const topPos = 52 + 34.4 * (props.rowsOnScreen - 1);
     return {
       left: leftPos + 'px',
       animation: animate,
@@ -42,7 +43,7 @@ const CalcScreen = (props) => {
     if (line === 0 && currentLine === 0) {
       return edgeLeft !== 0 ? '<' : '';
     }
-    if (lines.length >= line + 1 && lines[edgeBottom + line].length > CHARS_ON_SCREEN) {
+    if (lines.length > line + edgeBottom && lines[edgeBottom + line].length > CHARS_ON_SCREEN) {
       return '<';
     }
   }

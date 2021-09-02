@@ -4,7 +4,6 @@ I am not breaking any new ground here, but the practical application of the thin
 
 Things next:
 - Bug hunt!
-- - Bugs out when you resize screen and try to go up/down again
 - Add buttons to let user decide height and width
 - - Is there some way to make these buttons look nicer?
 - Button up/down screen

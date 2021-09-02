@@ -433,7 +433,7 @@ class Calculator extends Component {
   };
 
   clickScreen = (event) => {
-    const { cursorPos, edgeRight, edgeLeft } = this.state;
+    const { edgeRight, edgeLeft } = this.state;
 
     if (this.state.currentLine !== 0) return;
 
@@ -469,19 +469,22 @@ class Calculator extends Component {
 
   getHeight = () => {
     return {
-      height: (this.state.rowsOnScreen * 35 + 3) + 320 + 'px'
+      height: (this.state.rowsOnScreen * 35) + 330 + 'px'
     }
   }
 
   editNumberOfRows = (action) => {
     if (action === 'add' && this.state.rowsOnScreen < 10) {
       this.setState(currentState => {
-        if (currentState.edgeTop === currentState.rowsOnScreen && currentState.displayedLines.length > currentState.edgeTop) {
+        if (currentState.edgeBottom > 0) {
+          currentState.edgeBottom--;
+        } else if (currentState.displayedLines.length > currentState.edgeTop) {
           currentState.edgeTop++;
         }
         return {
           rowsOnScreen: currentState.rowsOnScreen + 1,
-          edgeTop: currentState.edgeTop
+          edgeTop: currentState.edgeTop,
+          edgeBottom: currentState.edgeBottom
         }
       });
     } else if (action === 'delete' && this.state.rowsOnScreen > 2) {
