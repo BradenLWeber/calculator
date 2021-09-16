@@ -1,0 +1,63 @@
+.colors-box {
+    background-color: rgb(51, 45, 99);
+    border-color: lightgray;
+    border-style: solid;
+    border-width: 3px;
+    margin-top: 5px;
+    width: 475px;
+    border-radius: 10px;
+    padding-bottom: 10px;
+    padding-top: 5px;
+}
+
+.color-box-text {
+    font-family:sans-serif;
+    font-size: 30px;
+    color: lightgray;
+    margin-top: 0;
+    padding: 0px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.color-button {
+    margin: 3px;
+    border-radius: 5px;
+    width: 80px;
+    height: 30px;
+}
+
+.default-button {
+    margin: 3px;
+    background-color: lightgray;
+    border-color: lightgray;
+    border-radius: 5px;
+}
+
+.dark-button {
+    margin: 3px;
+    background-color: rgb(104, 104, 104);
+    border-color: rgb(104, 104, 104);
+    border-radius: 5px;
+}
+
+.warm-button {
+    margin: 3px;
+    background-color: lightcoral;
+    border-color: lightcoral;
+    border-radius: 5px;
+}
+
+.cool-button {
+    margin: 3px;
+    background-color: rgb(151, 185, 216);
+    border-color: rgb(151, 185, 216);
+    border-radius: 5px;
+}
+
+.color-buttons {
+    flex: row;
+    display: flex;
+    justify-content: space-around;
+    width: 475px;
+}
