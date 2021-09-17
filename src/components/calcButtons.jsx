@@ -9,6 +9,7 @@ const CalcButtons = (props) => {
           symbol={symbol}
           click={props.click}
           currentLine={props.currentLine}
+          colorScheme={props.colorScheme}
         />
       ))}
       <br />
@@ -18,6 +19,7 @@ const CalcButtons = (props) => {
           symbol={symbol}
           click={props.click}
           currentLine={props.currentLine}
+          colorScheme={props.colorScheme}
         />
       ))}
       <br />
@@ -27,6 +29,7 @@ const CalcButtons = (props) => {
           symbol={symbol}
           click={props.click}
           currentLine={props.currentLine}
+          colorScheme={props.colorScheme}
         />
       ))}
       <br />
@@ -36,6 +39,7 @@ const CalcButtons = (props) => {
           symbol={symbol}
           click={props.click}
           currentLine={props.currentLine}
+          colorScheme={props.colorScheme}
         />
       ))}
       <br />
@@ -45,6 +49,7 @@ const CalcButtons = (props) => {
           symbol={symbol}
           click={props.click}
           currentLine={props.currentLine}
+          colorScheme={props.colorScheme}
         />
       ))}
     </div>

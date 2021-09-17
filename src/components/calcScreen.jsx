@@ -62,7 +62,7 @@ const CalcScreen = (props) => {
     >
       <div
         id='calc-screen-arrow-column-left'
-        className='calc-arrow-column-left'
+        className={'calc-arrow-column-left calc-arrow-column-left-'.concat(props.colorScheme)}
         style = {getHeight()}
       >
         <div style={{height: '0.5px'}} />
@@ -79,7 +79,7 @@ const CalcScreen = (props) => {
 
       <div
         id='calc-screen-number-column'
-        className='calc-number-column'
+        className={'calc-number-column calc-number-column-'.concat(props.colorScheme)}
         style={getHeight(true)}
       >
         {numberArray.map(element => {
@@ -97,7 +97,7 @@ const CalcScreen = (props) => {
 
       <div
         id='calc-screen-arrow-column-right'
-        className='calc-arrow-column-right'
+        className={'calc-arrow-column-right calc-arrow-column-right-'.concat(props.colorScheme)}
         style={getHeight()}
       >
         {numberArray.map(element => {

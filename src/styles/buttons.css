@@ -8,123 +8,207 @@
   transition-duration: 0.2s;
   cursor: pointer;
 }
-
 .button:hover {
   border-radius: 10px;
 }
 
 .button-operator {
-  background-color: lightgray;
-  color: black;
   width: 70px;
 }
-
-.button-operator:hover {
+.button-operator-default {
+  background-color: lightgray;
+  border-color: lightgray;
+}
+.button-operator-default:hover {
   background-color: #b8b8b8;
   border-color: #b8b8b8;
 }
+.button-operator-dark {
+  background-color: dimgray;
+  border-color: dimgray;
+  color: rgb(223, 223, 223);
+}
+.button-operator-dark:hover {
+  background-color: rgb(124, 124, 124);
+  border-color: rgb(124, 124, 124);
+}
 
 .button-left-side {
-  background-color: lightgray;
-  border-color: lightgray;
   margin-left: 20.5px;
   width: 70px;
 }
-
-.button-left-side:hover {
-  background-color: #c0c0c0;
-  border-color: #c0c0c0;
+.button-left-side-default {
+  background-color: lightgray;
+  border-color: lightgray;
+}
+.button-left-side-default:hover {
+  background-color: #b8b8b8;
+  border-color: #b8b8b8;
+}
+.button-left-side-dark {
+  background-color: dimgray;
+  border-color: dimgray;
+  color: rgb(223, 223, 223);
+}
+.button-left-side-dark:hover {
+  background-color: rgb(124, 124, 124);
+  border-color: rgb(124, 124, 124);
 }
 
 .button-up-down {
-  background-color: rgb(151, 185, 216);
-  border-color: rgb(151, 185, 216);
   width: 144px;
   margin-left: 20.5px;
 }
-
-.button-up-down:hover {
+.button-up-down-default {
+  background-color: rgb(151, 185, 216);
+  border-color: rgb(151, 185, 216);
+}
+.button-up-down-default:hover {
   background-color: rgb(103, 158, 209);
   border-color: rgb(103, 158, 209);
+}
+.button-up-down-dark {
+  background-color: rgb(54, 105, 153);
+  border-color: rgb(54, 105, 153);
+  color: rgb(223, 223, 223);
+}
+.button-up-down-dark:hover {
+  background-color: rgb(70, 121, 168);
+  border-color: rgb(70, 121, 168);
 }
 
 .button-left {
-  background-color: rgb(151, 185, 216);
-  border-color: rgb(151, 185, 216);
   width: 70px;
   margin-left: 20.5px;
 }
-
-.button-left:hover {
+.button-left-default {
+  background-color: rgb(151, 185, 216);
+  border-color: rgb(151, 185, 216);
+}
+.button-left-default:hover {
   background-color: rgb(103, 158, 209);
   border-color: rgb(103, 158, 209);
+}
+.button-left-dark {
+  background-color: rgb(54, 105, 153);
+  border-color: rgb(54, 105, 153);
+  color: rgb(223, 223, 223);
+}
+.button-left-dark:hover {
+  background-color: rgb(70, 121, 168);
+  border-color: rgb(70, 121, 168);
 }
 
 .button-right {
+  width: 70px;
+}
+.button-right-default {
   background-color: rgb(151, 185, 216);
   border-color: rgb(151, 185, 216);
   width: 70px;
 }
-
-.button-right:hover {
+.button-right-default:hover {
   background-color: rgb(103, 158, 209);
   border-color: rgb(103, 158, 209);
 }
-
-.button-equals {
-  background-color: lightgreen;
-  border-color: lightgreen;
+.button-right-dark {
+  background-color: rgb(54, 105, 153);
+  border-color: rgb(54, 105, 153);
   width: 70px;
+  color: rgb(223, 223, 223);
+}
+.button-right-dark:hover {
+  background-color: rgb(70, 121, 168);
+  border-color: rgb(70, 121, 168);
 }
 
-.button-equals:hover {
+.button-equals {
+  width: 70px;
+}
+.button-equals-default {
+  background-color: lightgreen;
+  border-color: lightgreen;
+}
+.button-equals-default:hover {
   background-color: rgb(86, 216, 86);
   border-color: rgb(86, 216, 86);
 }
-
-.button-delete {
-  background-color: lightcoral;
-  border-color: lightcoral;
-  width: 70px;
-  font-size: 15px;
+.button-equals-dark {
+  background-color: rgb(48, 95, 48);
+  border-color: rgb(48, 95, 48);
+  color: rgb(223, 223, 223);
+}
+.button-equals-dark:hover {
+  background-color: rgb(57, 116, 57);
+  border-color: rgb(57, 116, 57);
 }
 
-.button-delete:hover {
+.button-delete {
+  width: 70px;
+  font-size: 18px;
+}
+.button-delete-default {
+  background-color: lightcoral;
+  border-color: lightcoral;
+}
+.button-delete-default:hover {
   background-color: rgb(231, 93, 93);
   border-color: rgb(231, 93, 93);
+}
+.button-delete-dark {
+  background-color: rgb(139, 65, 65);
+  border-color: rgb(139, 65, 65);
+  color: rgb(223, 223, 223);
+}
+.button-delete-dark:hover {
+  background-color: rgb(163, 82, 82);
+  border-color: rgb(163, 82, 82);
 }
 
 .button-ac {
+  width: 70px;
+  margin-right: 13.5px;
+}
+.button-ac-default {
   background-color: lightcoral;
   border-color: lightcoral;
-  color: black;
-  width: 70px;
-  margin: 4px 2px;
-  margin-right: 13.5px;
-  transition-duration: 0.2s;
-  cursor: pointer;
 }
-
-.button-ac:hover {
+.button-ac-default:hover {
   background-color: rgb(231, 93, 93);
   border-color: rgb(231, 93, 93);
 }
-
-.button-number {
-  background-color: rgb(138, 138, 138);
-  border-color: rgb(138, 138, 138);
-  width: 70px;
+.button-ac-dark {
+  background-color: rgb(139, 65, 65);
+  border-color: rgb(139, 65, 65);
+  color: rgb(223, 223, 223);
+}
+.button-ac-dark:hover {
+  background-color: rgb(163, 82, 82);
+  border-color: rgb(163, 82, 82);
 }
 
-.button-number:hover {
+.button-number {
+  width: 70px;
+}
+.button-number-default {
+  background-color: rgb(138, 138, 138);
+  border-color: rgb(138, 138, 138);
+}
+.button-number-default:hover {
   background-color: #999898;
   border-color: #999898;
-  border-radius: 10px;
+}
+.button-number-dark {
+  background-color: rgb(44, 44, 44);
+  border-color: rgb(44, 44, 44);
+  color: rgb(223, 223, 223);
+}
+.button-number-dark:hover {
+  background-color: rgb(68, 68, 68);
+  border-color: rgb(68, 68, 68);
 }
 
 .delete-row-button {
-  background-color: rgb(151, 185, 216);
-  border-color: rgb(151, 185, 216);
   width: 100px;
   height: 12px;
   position: relative;
@@ -134,11 +218,18 @@
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
   font-size: 5px;
+  transition-duration: 0.2s;
+}
+.delete-row-button-default {
+  background-color: rgb(151, 185, 216);
+  border-color: rgb(151, 185, 216);
+}
+.delete-row-button-dark {
+  background-color: rgb(54, 105, 153);
+  border-color: rgb(54, 105, 153);
 }
 
 .add-row-button {
-  background-color: rgb(151, 185, 216);
-  border-color: rgb(151, 185, 216);
   width: 100px;
   height: 12px;
   position: relative;
@@ -147,6 +238,15 @@
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
   font-size: 5px;
+  transition-duration: 0.2s;
+}
+.add-row-button-default {
+  background-color: rgb(151, 185, 216);
+  border-color: rgb(151, 185, 216);
+}
+.add-row-button-dark {
+  background-color: rgb(54, 105, 153);
+  border-color: rgb(54, 105, 153);
 }
 
 .chevron {

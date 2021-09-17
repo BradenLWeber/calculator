@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import CalcButtons from './calcButtons';
 import CalcScreen from './calcScreen';
+import ColorsBox from './colorsBox';
 import '../styles/calcDisplay.css';
 import '../styles/colorBox.css';
 import { CHARS_ON_SCREEN, CHAR_SIZE, MAX_LINE_LENGTH } from '../constants/constants';
@@ -517,19 +518,26 @@ class Calculator extends Component {
     console.log('CursorPos:', this.state.cursorPos);
     console.log('Row index range:', this.state.edgeBottom, '-', this.state.edgeTop);
     console.log('Current line', this.state.currentLine);
+    console.log('Color Scheme: ', this.state.colorScheme);
+
+    const { colorScheme } = this.state;
 
     return (
       <React.Fragment>
         <div
           id='calculator-body'
-          className='calc-body'
-          style = {this.getHeight()}
+          className={'calc-body calc-body-'.concat(colorScheme)}
+          style={this.getHeight()}
           onKeyPress={this.handleKeyPress}
           onKeyDown={this.handleKeyPressOther}
           onClick={this.clickScreen}
         >
           <br />
-          <button className='delete-row-button' onClick={() => this.editNumberOfRows('delete')} />
+          <button
+            id='delete-row-button'
+            className={'delete-row-button delete-row-button-'.concat(colorScheme)}
+            onClick={() => this.editNumberOfRows('delete')}
+          />
           <CalcScreen
             lines={this.state.displayedLines}
             edgeRight={this.state.edgeRight}
@@ -538,26 +546,23 @@ class Calculator extends Component {
             cursorPos={this.state.cursorPos}
             currentLine={this.state.currentLine}
             rowsOnScreen={this.state.rowsOnScreen}
+            colorScheme={this.state.colorScheme}
           />
           <div style={{ height: '8px' }} />
-          <button className='add-row-button' onClick={() => this.editNumberOfRows('add')} />
+          <button
+            id='add-row-button'
+            className={'add-row-button add-row-button-'.concat(colorScheme)}
+            onClick={() => this.editNumberOfRows('add')}
+          />
           <div style={{ height: '13px' }} />
           <CalcButtons
             buttons={this.state.buttons}
             click={this.onClick}
             currentLine={this.state.currentLine}
+            colorScheme={colorScheme}
           />
         </div>
-        <div className='colors-box' id='color-box'>
-          <p className = 'color-box-text'>Change the color scheme</p>
-          <div id='color-buttons' className='color-buttons'>
-            <button onPress={() => this.setColor('Default')} className = 'color-button default-button'>Default</button>
-            <button onPress={() => this.setColor('Dark')} className = 'color-button dark-button'>Dark</button>
-            <button onPress={() => this.setColor('Warm')} className = 'color-button warm-button'>Warm</button>
-            <button onPress={() => this.setColor('Cool')} className = 'color-button cool-button'>Cool</button>
-          </div>
-        </div>
-
+        <ColorsBox colorScheme={colorScheme} setColor = {this.setColor}/>
       </React.Fragment>
     );
   }

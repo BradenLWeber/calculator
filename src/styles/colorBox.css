@@ -1,58 +1,50 @@
 .colors-box {
-    background-color: rgb(51, 45, 99);
-    border-color: lightgray;
     border-style: solid;
     border-width: 3px;
-    margin-top: 5px;
+    margin-top: 10px;
     width: 475px;
     border-radius: 10px;
     padding-bottom: 10px;
     padding-top: 5px;
 }
 
+.colors-box-default {
+    background-color: rgb(51, 45, 99);
+    border-color: rgb(51, 45, 99);
+}
+.colors-box-dark {
+    background-color: rgb(32, 30, 53);
+    border-color: rgb(32, 30, 53);
+}
+.colors-box-warm {
+    background-color: rgb(51, 45, 99);
+    border-color: rgb(51, 45, 99);
+}
+.colors-box-cool {
+    background-color: rgb(51, 45, 99);
+    border-color: rgb(51, 45, 99);
+}
+
 .color-box-text {
     font-family:sans-serif;
     font-size: 30px;
-    color: lightgray;
     margin-top: 0;
     padding: 0px;
     text-align: center;
     margin-bottom: 5px;
 }
 
-.color-button {
-    margin: 3px;
-    border-radius: 5px;
-    width: 80px;
-    height: 30px;
+.color-box-text-default {
+    color: lightgray;
 }
-
-.default-button {
-    margin: 3px;
-    background-color: lightgray;
-    border-color: lightgray;
-    border-radius: 5px;
+.color-box-text-dark {
+    color: lightgray;
 }
-
-.dark-button {
-    margin: 3px;
-    background-color: rgb(104, 104, 104);
-    border-color: rgb(104, 104, 104);
-    border-radius: 5px;
+.color-box-text-warm {
+    color: lightgray;
 }
-
-.warm-button {
-    margin: 3px;
-    background-color: lightcoral;
-    border-color: lightcoral;
-    border-radius: 5px;
-}
-
-.cool-button {
-    margin: 3px;
-    background-color: rgb(151, 185, 216);
-    border-color: rgb(151, 185, 216);
-    border-radius: 5px;
+.color-box-text-cool {
+    color: lightgray;
 }
 
 .color-buttons {
@@ -60,4 +52,166 @@
     display: flex;
     justify-content: space-around;
     width: 475px;
+}
+
+.color-button {
+    margin: 3px;
+    border-radius: 5px;
+    width: 80px;
+    height: 30px;
+    margin: 3px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition-duration: 0.2s;
+}
+.color-button:hover {
+    border-radius: 8px;
+}
+
+.default-button-default {
+    background-color: lightgray;
+    border-color: lightgray;
+}
+.default-button-default:hover {
+    background-color: #b8b8b8;
+    border-color: #b8b8b8;
+}
+
+.default-button-dark {
+    background-color: dimgray;
+    border-color: dimgray;
+    color: rgb(223, 223, 223);
+}
+.default-button-dark:hover {
+    background-color: rgb(108, 112, 114);
+    border-color: rgb(108, 112, 114);
+}
+
+.default-button-warm {
+    background-color: lightgray;
+    border-color: lightgray;
+}
+.default-button-warm:hover {
+    background-color: #b8b8b8;
+    border-color: #b8b8b8;
+}
+
+.default-button-cool {
+    background-color: lightgray;
+    border-color: lightgray;
+}
+.default-button-cool:hover {
+    background-color: #b8b8b8;
+    border-color: #b8b8b8;
+}
+
+.dark-button-default {
+    background-color: rgb(104, 104, 104);
+    border-color: rgb(104, 104, 104);
+}
+.dark-button-default:hover {
+    background-color: #999898;
+    border-color: #999898;
+}
+
+.dark-button-dark {
+    background-color: rgb(44, 44, 44);
+    border-color: rgb(65, 65, 65);
+    color: rgb(223, 223, 223);
+}
+.dark-button-dark:hover {
+    background-color: rgb(68, 68, 68);
+    border-color: rgb(78, 78, 78);
+}
+
+.dark-button-warm {
+    background-color: rgb(104, 104, 104);
+    border-color: rgb(104, 104, 104);
+}
+.dark-button-warm:hover {
+    background-color: #999898;
+    border-color: #999898;
+}
+
+.dark-button-cool {
+    background-color: rgb(104, 104, 104);
+    border-color: rgb(104, 104, 104);
+}
+.dark-button-cool:hover {
+    background-color: #999898;
+    border-color: #999898;
+}
+
+.warm-button-default {
+    background-color: lightcoral;
+    border-color: lightcoral;
+}
+.warm-button-default:hover {
+    background-color: rgb(231, 93, 93);
+    border-color: rgb(231, 93, 93);
+}
+
+.warm-button-dark {
+    background-color: rgb(139, 65, 65);
+    border-color: rgb(139, 65, 65);
+    color: rgb(223, 223, 223);
+}
+.warm-button-dark:hover {
+    background-color: rgb(163, 82, 82);
+    border-color: rgb(163, 82, 82);
+}
+
+.warm-button-warm {
+    background-color: lightcoral;
+    border-color: lightcoral;
+}
+.warm-button-warm:hover {
+    background-color: rgb(231, 93, 93);
+    border-color: rgb(231, 93, 93);
+}
+
+.warm-button-cool {
+    background-color: lightcoral;
+    border-color: lightcoral;
+}
+.warm-button-cool:hover {
+    background-color: rgb(231, 93, 93);
+    border-color: rgb(231, 93, 93);
+}
+
+.cool-button-default {
+    background-color: rgb(151, 185, 216);
+    border-color: rgb(151, 185, 216);
+}
+.cool-button-default:hover {
+    background-color: rgb(103, 158, 209);
+    border-color: rgb(103, 158, 209);
+}
+
+.cool-button-dark {
+    background-color: rgb(54, 105, 153);
+    border-color: rgb(54, 105, 153);
+    color: rgb(223, 223, 223);
+}
+.cool-button-dark:hover {
+    background-color: rgb(70, 121, 168);
+    border-color: rgb(70, 121, 168);
+}
+
+.cool-button-warm {
+    background-color: rgb(151, 185, 216);
+    border-color: rgb(151, 185, 216);
+}
+.cool-button-warm:hover {
+    background-color: rgb(103, 158, 209);
+    border-color: rgb(103, 158, 209);
+}
+
+.cool-button-cool {
+    background-color: rgb(151, 185, 216);
+    border-color: rgb(151, 185, 216);
+}
+.cool-button-cool:hover {
+    background-color: rgb(103, 158, 209);
+    border-color: rgb(103, 158, 209);
 }
