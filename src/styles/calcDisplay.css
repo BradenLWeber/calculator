@@ -18,6 +18,13 @@
 }
 .calc-body-dark {
   background-color: rgb(32, 30, 53);
+  outline:5px solid rgb(47, 44, 75);
+}
+.calc-body-warm {
+  background-color: rgb(54, 42, 42);
+}
+.calc-body-cool {
+  background-color: rgb(112, 70, 36);
 }
 
 .calc-number-column {
@@ -30,13 +37,21 @@
   display: inline-block;
   border-style: none ridge none ridge;
   border-width: 3px;
-  border-color: rgb(51, 45, 99);
   transition: height, 0.1s;
 }
 .calc-number-column-default {
   background: rgb(202, 202, 202);
+  border-color: rgb(51, 45, 99);
 }
 .calc-number-column-dark {
+  background: rgb(155, 155, 155);
+  border-color: rgb(32, 30, 53);
+}
+.calc-number-column-warm {
+  background: cornsilk;
+  border-color: rgb(54, 42, 42);
+}
+.calc-number-column-cool {
   background: rgb(155, 155, 155);
 }
 
@@ -55,6 +70,12 @@
   background: rgb(160, 161, 170);
 }
 .calc-arrow-column-left-dark {
+  background: rgb(112, 113, 128);
+}
+.calc-arrow-column-left-warm {
+  background: rgb(228, 215, 163);
+}
+.calc-arrow-column-left-cool {
   background: rgb(125, 126, 139);
 }
 
@@ -72,6 +93,12 @@
   background: rgb(160, 161, 170);
 }
 .calc-arrow-column-right-dark {
+  background: rgb(125, 126, 139);
+}
+.calc-arrow-column-right-warm {
+  background: rgb(228, 215, 163);
+}
+.calc-arrow-column-right-cool {
   background: rgb(125, 126, 139);
 }
 
