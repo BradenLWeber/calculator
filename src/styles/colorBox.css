@@ -199,12 +199,12 @@
 }
 
 .cool-button-warm {
-    background-color: darkorange;
-    border-color: darkorange;
+    background-color: rgb(184, 145, 95);
+    border-color: rgb(184, 145, 95);
 }
 .cool-button-warm:hover {
-    background-color: rgb(219, 126, 11);
-    border-color: rgb(219, 126, 11);
+    background-color: rgb(145, 107, 59);
+    border-color: rgb(145, 107, 59);
 }
 
 .cool-button-cool {

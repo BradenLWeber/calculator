@@ -120,13 +120,13 @@
   border-color: rgb(70, 121, 168);
 }
 .button-up-down-warm {
-  background-color: darkorange;
-  border-color: rgb(219, 126, 11);
+  background-color: rgb(184, 145, 95);
+  border-color: rgb(184, 145, 95);
   color: black;
 }
 .button-up-down-warm:hover {
-  background-color: rgb(219, 126, 11);
-  border-color: rgb(219, 126, 11);
+  background-color: rgb(145, 107, 59);
+  border-color: rgb(145, 107, 59);
 }
 .button-up-down-cool {
   background-color: rgb(54, 105, 153);
@@ -162,13 +162,13 @@
   border-color: rgb(70, 121, 168);
 }
 .button-left-warm {
-  background-color: darkorange;
-  border-color: rgb(219, 126, 11);
+  background-color: rgb(184, 145, 95);
+  border-color: rgb(184, 145, 95);
   color: black;
 }
 .button-left-warm:hover {
-  background-color: rgb(219, 126, 11);
-  border-color: rgb(219, 126, 11);
+  background-color: rgb(145, 107, 59);
+  border-color: rgb(145, 107, 59);
 }
 .button-left-cool {
   background-color: rgb(54, 105, 153);
@@ -205,13 +205,13 @@
   border-color: rgb(70, 121, 168);
 }
 .button-right-warm {
-  background-color: darkorange;
-  border-color: rgb(219, 126, 11);
+  background-color: rgb(184, 145, 95);
+  border-color: rgb(184, 145, 95);
   color: black;
 }
 .button-right-warm:hover {
-  background-color: rgb(219, 126, 11);
-  border-color: rgb(219, 126, 11);
+  background-color: rgb(145, 107, 59);
+  border-color: rgb(145, 107, 59);
 }
 .button-right-cool {
   background-color: rgb(54, 105, 153);
@@ -414,8 +414,8 @@
   border-color: rgb(54, 105, 153);
 }
 .delete-row-button-warm {
-  background-color: rgb(219, 126, 11);
-  border-color: rgb(219, 126, 11);
+  background-color: rgb(184, 145, 95);
+  border-color: rgb(184, 145, 95);
 }
 .delete-row-button-cool {
   background-color: rgb(54, 105, 153);
@@ -442,8 +442,8 @@
   border-color: rgb(54, 105, 153);
 }
 .add-row-button-warm {
-  background-color: rgb(219, 126, 11);
-  border-color: rgb(219, 126, 11);
+  background-color: rgb(184, 145, 95);
+  border-color: rgb(184, 145, 95);
 }
 .add-row-button-cool {
   background-color: rgb(54, 105, 153);
