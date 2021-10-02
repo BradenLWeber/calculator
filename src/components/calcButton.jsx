@@ -13,13 +13,13 @@ class CalcButton extends Component {
 
     this.state.colorScheme = props.colorScheme;
 
-    if (symbol === '\u2191' || symbol === '\u2193') this.state.button += ' button-up-down button-up-down-';
-    else if (symbol === '\u2190') this.state.button += ' button-left button-left-';
-    else if (symbol === '\u2192') this.state.button += ' button-right button-right-';
+    if (symbol === '\u2191' || symbol === '\u2193') this.state.button += ' button-up-down button-arrow-';
+    else if (symbol === '\u2190') this.state.button += ' button-left button-arrow-';
+    else if (symbol === '\u2192') this.state.button += ' button-right button-arrow-';
     else if (symbol === '=' || symbol === 'copy') this.state.button += ' button-equals button-equals-';
     else if (symbol === 'AC') this.state.button += ' button-ac button-ac-';
     else if (symbol === '\u232B') this.state.button += ' button-delete button-delete-';
-    else if (symbol === 'x!' || symbol === '\u221A') this.state.button += ' button-left-side button-left-side-';
+    else if (symbol === 'x!' || symbol === '\u221A') this.state.button += ' button-left-side button-operator-';
     else
       try {
         eval(symbol);

@@ -24,7 +24,7 @@
   background-color: rgb(54, 42, 42);
 }
 .calc-body-cool {
-  background-color: rgb(112, 70, 36);
+  background-color: rgb(41, 52, 90);
 }
 
 .calc-number-column {
@@ -52,7 +52,8 @@
   border-color: rgb(54, 42, 42);
 }
 .calc-number-column-cool {
-  background: rgb(155, 155, 155);
+  background: rgb(228, 243, 248);
+  border-color: rgb(41, 52, 90);
 }
 
 .calc-arrow-column-left {
@@ -66,18 +67,6 @@
   font-family: "Consolas";
   transition: height, 0.1s;
 }
-.calc-arrow-column-left-default {
-  background: rgb(160, 161, 170);
-}
-.calc-arrow-column-left-dark {
-  background: rgb(112, 113, 128);
-}
-.calc-arrow-column-left-warm {
-  background: rgb(228, 215, 163);
-}
-.calc-arrow-column-left-cool {
-  background: rgb(125, 126, 139);
-}
 
 .calc-arrow-column-right {
   height: 145px;
@@ -89,17 +78,18 @@
   font-family: "Consolas";
   transition: height, 0.1s;
 }
-.calc-arrow-column-right-default {
+
+.calc-arrow-column-default {
   background: rgb(160, 161, 170);
 }
-.calc-arrow-column-right-dark {
+.calc-arrow-column-dark {
   background: rgb(125, 126, 139);
 }
-.calc-arrow-column-right-warm {
+.calc-arrow-column-warm {
   background: rgb(228, 215, 163);
 }
-.calc-arrow-column-right-cool {
-  background: rgb(125, 126, 139);
+.calc-arrow-column-cool {
+  background: rgb(193, 212, 212);
 }
 
 .calc-cursor {

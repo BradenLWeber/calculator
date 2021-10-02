@@ -44,184 +44,68 @@
   border-color: rgb(219, 214, 192);
 }
 .button-operator-cool {
-  background-color: rgb(83, 83, 83);
-  border-color: rgb(105, 105, 105);
-  color: rgb(223, 223, 223);
+  background-color: rgb(210, 233, 220);
+  border-color: rgb(210, 233, 220);
+  color: black;
   border-width: 3px;
 }
 .button-operator-cool:hover {
-  background-color: rgb(105, 105, 105);
-  border-color: rgb(105, 105, 105);
+  background-color: rgb(158, 158, 158);
+  border-color: rgb(158, 158, 158);
 }
 
 .button-left-side {
   margin-left: 20.5px;
   width: 70px;
 }
-.button-left-side-default {
-  background-color: lightgray;
-  border-color: lightgray;
-}
-.button-left-side-default:hover {
-  background-color: #b8b8b8;
-  border-color: #b8b8b8;
-}
-.button-left-side-dark {
-  background-color: rgb(83, 83, 83);
-  border-color: rgb(105, 105, 105);
-  color: rgb(223, 223, 223);
-  border-width: 3px;
-}
-.button-left-side-dark:hover {
-  background-color: rgb(105, 105, 105);
-  border-color: rgb(105, 105, 105);
-}
-.button-left-side-warm {
-  background-color: cornsilk;
-  border-color: rgb(226, 217, 180);
-  color: black;
-  border-width: 2px;
-}
-.button-left-side-warm:hover {
-  background-color: rgb(219, 214, 192);
-  border-color: rgb(219, 214, 192);
-}
-.button-left-side-cool {
-  background-color: rgb(83, 83, 83);
-  border-color: rgb(105, 105, 105);
-  color: rgb(223, 223, 223);
-  border-width: 3px;
-}
-.button-left-side-cool:hover {
-  background-color: rgb(105, 105, 105);
-  border-color: rgb(105, 105, 105);
-}
 
 .button-up-down {
   width: 144px;
   margin-left: 20.5px;
 }
-.button-up-down-default {
-  background-color: rgb(151, 185, 216);
-  border-color: rgb(151, 185, 216);
-}
-.button-up-down-default:hover {
-  background-color: rgb(103, 158, 209);
-  border-color: rgb(103, 158, 209);
-}
-.button-up-down-dark {
-  background-color: rgb(54, 105, 153);
-  border-color: rgb(70, 121, 168);
-  border-width: 3px;
-  color: rgb(223, 223, 223);
-}
-.button-up-down-dark:hover {
-  background-color: rgb(70, 121, 168);
-  border-color: rgb(70, 121, 168);
-}
-.button-up-down-warm {
-  background-color: rgb(184, 145, 95);
-  border-color: rgb(184, 145, 95);
-  color: black;
-}
-.button-up-down-warm:hover {
-  background-color: rgb(145, 107, 59);
-  border-color: rgb(145, 107, 59);
-}
-.button-up-down-cool {
-  background-color: rgb(54, 105, 153);
-  border-color: rgb(70, 121, 168);
-  border-width: 3px;
-  color: rgb(223, 223, 223);
-}
-.button-up-down-cool:hover {
-  background-color: rgb(70, 121, 168);
-  border-color: rgb(70, 121, 168);
-}
-
 .button-left {
   width: 70px;
   margin-left: 20.5px;
 }
-.button-left-default {
-  background-color: rgb(151, 185, 216);
-  border-color: rgb(151, 185, 216);
-}
-.button-left-default:hover {
-  background-color: rgb(103, 158, 209);
-  border-color: rgb(70, 121, 168);
-}
-.button-left-dark {
-  background-color: rgb(54, 105, 153);
-  border-color: rgb(54, 105, 153);
-  color: rgb(223, 223, 223);
-  border-width: 3px;
-}
-.button-left-dark:hover {
-  background-color: rgb(70, 121, 168);
-  border-color: rgb(70, 121, 168);
-}
-.button-left-warm {
-  background-color: rgb(184, 145, 95);
-  border-color: rgb(184, 145, 95);
-  color: black;
-}
-.button-left-warm:hover {
-  background-color: rgb(145, 107, 59);
-  border-color: rgb(145, 107, 59);
-}
-.button-left-cool {
-  background-color: rgb(54, 105, 153);
-  border-color: rgb(54, 105, 153);
-  color: rgb(223, 223, 223);
-  border-width: 3px;
-}
-.button-left-cool:hover {
-  background-color: rgb(70, 121, 168);
-  border-color: rgb(70, 121, 168);
-}
-
 .button-right {
   width: 70px;
 }
-.button-right-default {
+
+.button-arrow-default {
   background-color: rgb(151, 185, 216);
   border-color: rgb(151, 185, 216);
-  width: 70px;
 }
-.button-right-default:hover {
+.button-arrow-default:hover {
   background-color: rgb(103, 158, 209);
   border-color: rgb(103, 158, 209);
 }
-.button-right-dark {
+.button-arrow-dark {
   background-color: rgb(54, 105, 153);
   border-color: rgb(70, 121, 168);
-  width: 70px;
   border-width: 3px;
-  color: rgb(223, 223, 223);
+  color: white;
 }
-.button-right-dark:hover {
+.button-arrow-dark:hover {
   background-color: rgb(70, 121, 168);
   border-color: rgb(70, 121, 168);
 }
-.button-right-warm {
+.button-arrow-warm {
   background-color: rgb(184, 145, 95);
   border-color: rgb(184, 145, 95);
   color: black;
 }
-.button-right-warm:hover {
+.button-arrow-warm:hover {
   background-color: rgb(145, 107, 59);
   border-color: rgb(145, 107, 59);
 }
-.button-right-cool {
-  background-color: rgb(54, 105, 153);
-  border-color: rgb(70, 121, 168);
-  width: 70px;
+.button-arrow-cool {
+  background-color: rgb(106, 172, 158);
+  border-color: rgb(106, 172, 158);
   border-width: 3px;
-  color: rgb(223, 223, 223);
+  color: black;
 }
-.button-right-cool:hover {
-  background-color: rgb(70, 121, 168);
+.button-arrow-cool:hover {
+  background-color: rgb(171, 202, 97);
   border-color: rgb(70, 121, 168);
 }
 
@@ -247,23 +131,23 @@
   border-color: rgb(57, 116, 57);
 }
 .button-equals-warm {
-  background-color: rgb(202, 183, 72);
-  border-color: rgb(202, 183, 72);
+  background-color: rgb(212, 181, 79);
+  border-color: rgb(212, 181, 79);
   color: black;
   border-width: 3px;
 }
 .button-equals-warm:hover {
-  background-color: rgb(168, 144, 8);
-  border-color: rgb(168, 144, 8);
+  background-color: rgb(172, 144, 52);
+  border-color: rgb(172, 144, 52);
 }
 .button-equals-cool {
-  background-color: rgb(48, 95, 48);
-  border-color: rgb(57, 116, 57);
-  color: rgb(223, 223, 223);
+  background-color: rgb(88, 197, 106);
+  border-color: rgb(88, 197, 106);
+  color: black;
   border-width: 3px;
 }
 .button-equals-cool:hover {
-  background-color: rgb(57, 116, 57);
+  background-color: rgb(102, 57, 116);
   border-color: rgb(57, 116, 57);
 }
 
@@ -299,9 +183,9 @@
   border-color: rgb(145, 71, 71);
 }
 .button-delete-cool {
-  background-color: rgb(139, 65, 65);
-  border-color: rgb(163, 82, 82);
-  color: rgb(223, 223, 223);
+  background-color: rgb(106, 85, 202);
+  border-color: rgb(106, 85, 202);
+  color: black;
   border-width: 3px
 }
 .button-delete-cool:hover {
@@ -341,9 +225,9 @@
   border-color: rgb(145, 71, 71);
 }
 .button-ac-cool {
-  background-color: rgb(138, 62, 62);
-  border-color: rgb(138, 62, 62);
-  color: rgb(223, 223, 223);
+  background-color: rgb(106, 85, 202);
+  border-color: rgb(106, 85, 202);
+  color: black;
   border-width: 3px;
 }
 .button-ac-cool:hover {
@@ -383,9 +267,9 @@
   border-color: rgb(99, 64, 39);
 }
 .button-number-cool {
-  background-color: rgb(44, 44, 44);
-  border-color: rgb(68, 68, 68);
-  color: rgb(223, 223, 223);
+  background-color: rgb(62, 96, 190);
+  border-color: rgb(62, 96, 190);
+  color: black;
   border-width: 3px;
 }
 .button-number-cool:hover {
@@ -405,22 +289,6 @@
   font-size: 5px;
   transition-duration: 0.2s;
 }
-.delete-row-button-default {
-  background-color: rgb(151, 185, 216);
-  border-color: rgb(151, 185, 216);
-}
-.delete-row-button-dark {
-  background-color: rgb(54, 105, 153);
-  border-color: rgb(54, 105, 153);
-}
-.delete-row-button-warm {
-  background-color: rgb(184, 145, 95);
-  border-color: rgb(184, 145, 95);
-}
-.delete-row-button-cool {
-  background-color: rgb(54, 105, 153);
-  border-color: rgb(54, 105, 153);
-}
 
 .add-row-button {
   width: 100px;
@@ -433,21 +301,21 @@
   font-size: 5px;
   transition-duration: 0.2s;
 }
-.add-row-button-default {
+.row-button-default {
   background-color: rgb(151, 185, 216);
   border-color: rgb(151, 185, 216);
 }
-.add-row-button-dark {
+.row-button-dark {
   background-color: rgb(54, 105, 153);
   border-color: rgb(54, 105, 153);
 }
-.add-row-button-warm {
+.row-button-warm {
   background-color: rgb(184, 145, 95);
   border-color: rgb(184, 145, 95);
 }
-.add-row-button-cool {
-  background-color: rgb(54, 105, 153);
-  border-color: rgb(54, 105, 153);
+.row-button-cool {
+  background-color: rgb(106, 172, 158);
+  border-color: rgb(106, 172, 158);
 }
 
 .chevron {

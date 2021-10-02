@@ -535,7 +535,7 @@ class Calculator extends Component {
           <br />
           <button
             id='delete-row-button'
-            className={'delete-row-button delete-row-button-'.concat(colorScheme)}
+            className={'delete-row-button row-button-'.concat(colorScheme)}
             onClick={() => this.editNumberOfRows('delete')}
           />
           <CalcScreen
@@ -551,7 +551,7 @@ class Calculator extends Component {
           <div style={{ height: '8px' }} />
           <button
             id='add-row-button'
-            className={'add-row-button add-row-button-'.concat(colorScheme)}
+            className={'add-row-button row-button-'.concat(colorScheme)}
             onClick={() => this.editNumberOfRows('add')}
           />
           <div style={{ height: '13px' }} />
