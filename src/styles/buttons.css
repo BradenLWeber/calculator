@@ -40,8 +40,8 @@
   border-width: 2px;
 }
 .button-operator-warm:hover {
-  background-color: rgb(226, 220, 193);
-  border-color: rgb(226, 220, 193);
+  background-color: rgb(219, 214, 192);
+  border-color: rgb(219, 214, 192);
 }
 .button-operator-cool {
   background-color: rgb(83, 83, 83);
@@ -83,8 +83,8 @@
   border-width: 2px;
 }
 .button-left-side-warm:hover {
-  background-color: rgb(226, 220, 193);
-  border-color: rgb(226, 220, 193);
+  background-color: rgb(219, 214, 192);
+  border-color: rgb(219, 214, 192);
 }
 .button-left-side-cool {
   background-color: rgb(83, 83, 83);
@@ -247,14 +247,14 @@
   border-color: rgb(57, 116, 57);
 }
 .button-equals-warm {
-  background-color: gold;
-  border-color: gold;
+  background-color: rgb(202, 183, 72);
+  border-color: rgb(202, 183, 72);
   color: black;
   border-width: 3px;
 }
 .button-equals-warm:hover {
-  background-color: rgb(231, 193, 22);
-  border-color: rgb(231, 193, 22);
+  background-color: rgb(168, 144, 8);
+  border-color: rgb(168, 144, 8);
 }
 .button-equals-cool {
   background-color: rgb(48, 95, 48);
@@ -290,13 +290,13 @@
   border-color: rgb(163, 82, 82);
 }
 .button-delete-warm {
-  background-color: indianred;
-  border-color: indianred;
+  background-color: rgb(173, 97, 97);
+  border-color: rgb(173, 97, 97);
   color: black;
 }
 .button-delete-warm:hover {
-  background-color: rgb(175, 62, 62);
-  border-color: rgb(175, 62, 62);
+  background-color: rgb(145, 71, 71);
+  border-color: rgb(145, 71, 71);
 }
 .button-delete-cool {
   background-color: rgb(139, 65, 65);
@@ -332,17 +332,17 @@
   border-color: rgb(163, 82, 82);
 }
 .button-ac-warm {
-  background-color: indianred;
-  border-color: indianred;
+  background-color: rgb(173, 97, 97);
+  border-color: rgb(173, 97, 97);
   color: black;
 }
 .button-ac-warm:hover {
-  background-color: rgb(175, 62, 62);
-  border-color: rgb(175, 62, 62);
+  background-color: rgb(145, 71, 71);
+  border-color: rgb(145, 71, 71);
 }
 .button-ac-cool {
-  background-color: rgb(139, 65, 65);
-  border-color: rgb(163, 82, 82);
+  background-color: rgb(138, 62, 62);
+  border-color: rgb(138, 62, 62);
   color: rgb(223, 223, 223);
   border-width: 3px;
 }
@@ -373,14 +373,14 @@
   border-color: rgb(68, 68, 68);
 }
 .button-number-warm {
-  background-color: saddlebrown;
-  border-color: saddlebrown;
+  background-color: rgb(110, 78, 55);
+  border-color: rgb(110, 78, 55);
   color: black;
   border-width: 3px;
 }
 .button-number-warm:hover {
-  background-color: rgb(110, 50, 7);
-  border-color: rgb(110, 50, 7);
+  background-color: rgb(99, 64, 39);
+  border-color: rgb(99, 64, 39);
 }
 .button-number-cool {
   background-color: rgb(44, 44, 44);

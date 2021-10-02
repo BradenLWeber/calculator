@@ -21,7 +21,7 @@ const ColorsBox = (props) => {
               Dark
             </button>
             <button
-              // onClick={() => props.setColor('warm')}
+              onClick={() => props.setColor('warm')}
               className={'color-button warm-button-'.concat(props.colorScheme)}
             >
               Warm
