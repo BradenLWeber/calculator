@@ -101,8 +101,8 @@
     border-color: rgb(210, 233, 220);
 }
 .default-button-cool:hover {
-    background-color: rgb(158, 158, 158);
-    border-color: rgb(123, 163, 141);
+    background-color: rgb(179, 216, 195);
+    border-color: rgb(179, 216, 195);
 }
 
 .dark-button-default {
@@ -138,8 +138,8 @@
     border-color: rgb(62, 96, 190);
 }
 .dark-button-cool:hover {
-    background-color: #999898;
-    border-color: #999898;
+    background-color: rgb(88, 117, 197);
+    border-color: rgb(88, 117, 197);
 }
 
 .warm-button-default {
@@ -175,8 +175,8 @@
     border-color: rgb(106, 85, 202);
 }
 .warm-button-cool:hover {
-    background-color: rgb(231, 93, 93);
-    border-color: rgb(231, 93, 93);
+    background-color: rgb(124, 105, 209);
+    border-color: rgb(124, 105, 209);
 }
 
 .cool-button-default {
@@ -212,6 +212,6 @@
     border-color: rgb(106, 172, 142);
 }
 .cool-button-cool:hover {
-    background-color: rgb(103, 158, 209);
-    border-color: rgb(103, 158, 209);
+    background-color: rgb(72, 146, 113);
+    border-color: rgb(72, 146, 113);
 }

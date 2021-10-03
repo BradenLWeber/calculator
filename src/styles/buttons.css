@@ -50,8 +50,8 @@
   border-width: 3px;
 }
 .button-operator-cool:hover {
-  background-color: rgb(158, 158, 158);
-  border-color: rgb(158, 158, 158);
+  background-color: rgb(179, 216, 195);
+  border-color: rgb(179, 216, 195);
 }
 
 .button-left-side {
@@ -105,8 +105,8 @@
   color: black;
 }
 .button-arrow-cool:hover {
-  background-color: rgb(171, 202, 97);
-  border-color: rgb(70, 121, 168);
+  background-color: rgb(72, 146, 113);
+  border-color: rgb(72, 146, 113);
 }
 
 .button-equals {
@@ -147,8 +147,8 @@
   border-width: 3px;
 }
 .button-equals-cool:hover {
-  background-color: rgb(102, 57, 116);
-  border-color: rgb(57, 116, 57);
+  background-color: rgb(71, 148, 83);
+  border-color: rgb(71, 148, 83);
 }
 
 .button-delete {
@@ -189,8 +189,8 @@
   border-width: 3px
 }
 .button-delete-cool:hover {
-  background-color: rgb(163, 82, 82);
-  border-color: rgb(163, 82, 82);
+  background-color: rgb(124, 105, 209);
+  border-color: rgb(124, 105, 209);
 }
 
 .button-ac {
@@ -231,8 +231,8 @@
   border-width: 3px;
 }
 .button-ac-cool:hover {
-  background-color: rgb(163, 82, 82);
-  border-color: rgb(163, 82, 82);
+  background-color: rgb(124, 105, 209);
+  border-color: rgb(124, 105, 209);
 }
 
 .button-number {
@@ -273,8 +273,8 @@
   border-width: 3px;
 }
 .button-number-cool:hover {
-  background-color: rgb(68, 68, 68);
-  border-color: rgb(68, 68, 68);
+  background-color: rgb(88, 117, 197);
+  border-color: rgb(88, 117, 197);
 }
 
 .delete-row-button {
