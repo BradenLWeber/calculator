@@ -21,7 +21,7 @@ class App extends Component {
         </p>
         <br/>
         <p style={{marginTop: 0}}>
-          Note: this app designed to be run on a computer, not on a mobile device
+          Note: this app is designed to be run on a computer, not on a mobile device
         </p>
       </React.Fragment>
     );
