@@ -13,11 +13,15 @@ class App extends Component {
             Braden Weber
           </a>
         </p>
-        <p style={{marginTop: 0}}>
+        <p style={{marginTop: 0, marginBottom: 2}}>
           Project managed on&nbsp;
           <a href='https://github.com/BradenLWeber/calculator'>
             GitHub
           </a>
+        </p>
+        <br/>
+        <p style={{marginTop: 0}}>
+          Note: this app designed to be run on a computer, not on a mobile device
         </p>
       </React.Fragment>
     );
