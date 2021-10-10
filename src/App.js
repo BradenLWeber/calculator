@@ -21,7 +21,7 @@ class App extends Component {
         </p>
         <br/>
         <p style={{marginTop: 0}}>
-          Note: this app may have visual bugs on mobile, but it always works on a computer
+          Note: this app seems to have visual bugs on some devices. I'm working on it!
         </p>
       </React.Fragment>
     );
