@@ -6,3 +6,5 @@ Things next:
 - Button up/down screen
 - - Make buttons into shape of up/down arrows?
 - - Have arrows both above the screen?
+- Fix incompatibility with some devices
+- - Is it an issue of using absolute position when it whould be relative?
