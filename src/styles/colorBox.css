@@ -1,6 +1,7 @@
 .colors-box {
     border-style: solid;
     border-width: 3px;
+    position: relative;
     margin-top: 10px;
     width: 475px;
     border-radius: 10px;

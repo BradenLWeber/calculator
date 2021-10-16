@@ -10,6 +10,7 @@
 .calc-body {
   width: 481px;
   height: 435px;
+  position: relative;
   border-radius: 10px;
   transition: height, 0.1s;
 }
