@@ -512,13 +512,13 @@ class Calculator extends Component {
   }
 
   render() {
-    console.log('-------------------');
-    console.log('displayedLines during render:', this.state.displayedLines);
-    console.log('Display index range:', this.state.edgeLeft, '-', this.state.edgeRight);
-    console.log('CursorPos:', this.state.cursorPos);
-    console.log('Row index range:', this.state.edgeBottom, '-', this.state.edgeTop);
-    console.log('Current line', this.state.currentLine);
-    console.log('Color Scheme: ', this.state.colorScheme);
+    // console.log('-------------------');
+    // console.log('displayedLines during render:', this.state.displayedLines);
+    // console.log('Display index range:', this.state.edgeLeft, '-', this.state.edgeRight);
+    // console.log('CursorPos:', this.state.cursorPos);
+    // console.log('Row index range:', this.state.edgeBottom, '-', this.state.edgeTop);
+    // console.log('Current line', this.state.currentLine);
+    // console.log('Color Scheme: ', this.state.colorScheme);
 
     const { colorScheme } = this.state;
 
